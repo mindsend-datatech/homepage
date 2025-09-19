@@ -6,6 +6,24 @@ tags: ["Kadena", "Releases"]
 draft: false
 ---
 
+<div className="disclaimer-box">
+
+**Disclaimer (NFA)**: This post outlines technical details about the snaK Wallet and its integration with the Kadena blockchain. It is intended for informational and educational purposes only. It is not financial advice or an endorsement of any specific token or investment strategy.
+
+</div>
+
+<style jsx>{`
+  .disclaimer-box {
+    border-left: 4px solid #f0ad4e;
+    background-color: rgba(240, 173, 78, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+  }
+`}</style>
+
+
+
 We’re excited to announce the first **major post-launch release** of the snaK interface! This update introduces powerful improvements for token management, transaction clarity, and multi-chain usability — making it easier than ever to interact across the Kadena ecosystem.
 
 ## What’s New
@@ -13,8 +31,12 @@ We’re excited to announce the first **major post-launch release** of the snaK 
 ### Fungible-v2 Support
 snaK now supports **all tokens implementing the fungible-v2 interface**. This ensures broader compatibility and gives you more flexibility when managing your assets.
 
+![snaK fungible-v2 support](/images/blog/snak-fung/fungible.png)
+
 ### Chain Abstraction in the UI
 We’ve introduced **UI-level chain abstraction**, so you don’t need to worry about the complexity of Kadena’s multi-chain setup. Assets are now easier to track, send, and understand — no more manual chain juggling.
+
+![snaK chain abstraction](/images/blog/snak-fung/chain-abs.png)
 
 ### Enhanced Assets Tab
 The new **Assets tab** shows:
@@ -26,6 +48,8 @@ This means you can view the big picture while still being able to dive deep into
 ### Send Flow Improvements
 - **Send Modal Enhancements:** A smoother flow for sending all tokens on all chains
 - **Send Confirmation Modal:** Review and verify every detail of your transaction before signing, reducing the risk of mistakes
+
+![snaK new send modal](/images/blog/snak-fung/new-send.png)
 
 ### Transaction List Enhancements
 We’ve improved the transaction list with:
