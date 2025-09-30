@@ -15,6 +15,7 @@ import { baseURL } from "@/app/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import { person, about, social } from "@/app/resources/content";
+import LogoLoop, { LogoItem } from "@/components/LogoLoop";
 import React from "react";
 import { Meta, Schema } from "@/once-ui/modules";
 
@@ -330,76 +331,23 @@ export default function About() {
                                 as="h2"
                                 id={about.technical.title}
                                 variant="display-strong-s"
-                                marginBottom="40"
+                                marginBottom="24"
                             >
                                 {about.technical.title}
                             </Heading>
 
-                            <Flex  wrap={true} gap="l" center={true} marginBottom="40">
-                                {about.technical.skills.map((skill, index) => (
-                                    <Column key={`${skill.title}-${index}`} align="center">
-                                        {skill.link ? (
-                                            <a
-                                                href={skill.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                style={{ display: "block" }}
-                                            >
-                                                <div
-                                                    style={{
-                                                        width: 48,
-                                                        height: 48,
-                                                        borderRadius: "50%",
-                                                        backgroundColor: "var(--color-surface)",
-                                                        color: "black",
-                                                        display: "flex",
-                                                        alignItems: "center",
-                                                        justifyContent: "center",
-                                                        padding: 8,
-                                                        boxShadow: "0 0 0 1px var(--color-border)",
-                                                    }}
-                                                >
-                                                    <img
-                                                        src={skill.img}
-                                                        alt={`${skill.title} logo`}
-                                                        style={{
-                                                            width: "100%",
-                                                            height: "100%",
-                                                            objectFit: "contain",
-                                                            filter: "invert(0.7)", // adapt if needed
-                                                        }}
-                                                    />
-                                                </div>
-                                            </a>
-                                        ) : (
-                                            <div
-                                                style={{
-                                                    width: 48,
-                                                    height: 48,
-                                                    borderRadius: "50%",
-                                                    backgroundColor: "var(--color-surface)",
-                                                    display: "flex",
-                                                    alignItems: "center",
-                                                    justifyContent: "center",
-                                                    padding: 8,
-                                                    boxShadow: "0 0 0 1px var(--color-border)",
-                                                }}
-                                            >
-                                                <img
-                                                    src={skill.img}
-                                                    alt={`${skill.title} logo`}
-                                                    style={{
-                                                        width: "100%",
-                                                        height: "100%",
-                                                        objectFit: "contain",
-                                                        filter: "invert(0.7)",
-                                                    }}
-                                                />
-                                            </div>
-                                        )}
-                                    </Column>
-                                ))}
-                            </Flex>
+                            <div style={{ width: "100%", position: "relative", overflow: "hidden", padding: "8px 0", marginBottom: 40 }}>
+                                <LogoLoop
+                                    logos={about.technical.skills.map((s) => ({ src: s.img, alt: s.title, href: s.link })) as LogoItem[]}
+                                    speed={48}
+                                    direction="left"
+                                    logoHeight={48}
+                                    gap={24}
+                                    pauseOnHover
+                                    fadeOut={false}
+                                    ariaLabel="Our Stack logos"
+                                />
+                            </div>
                         </>
                     )}
 
