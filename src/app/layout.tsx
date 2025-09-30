@@ -47,24 +47,25 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             )}
         >
             <head>
-                <meta name="description" content=""/>
+                <meta name="description" content="" />
 
-                    <meta property="og:url" content="https://mindsend.xyz" />
-                    <meta property="og:type" content="website" />
-                    <meta property="og:title" content="" />
-                    <meta property="og:description" content="" />
-                    <meta property="og:image" content="https://opengraph.b-cdn.net/production/images/c53b648f-c423-4882-b67f-b10117ea61e5.jpg?token=-m4wfD7XKjkhxfcKZRbRrPyQYbCEX3VdsTSShF51NbY&height=630&width=1200&expires=33295179384" />
+                <meta property="og:url" content="https://mindsend.xyz" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="" />
+                <meta property="og:description" content="" />
+                <meta property="og:image" content="https://opengraph.b-cdn.net/production/images/269e2189-33d9-49e2-9efd-aac7295872ce.jpg?token=WRn3kfL5UurQzuRTJZo62LoSKdpgaPyh4351Kb6Sgnc&height=630&width=1200&expires=33295254109" />
 
-                    <meta name="twitter:card" content="summary_large_image" />
-                    <meta property="twitter:domain" content="mindsend.xyz" />
-                    <meta property="twitter:url" content="https://mindsend.xyz" />
-                    <meta name="twitter:title" content="" />
-                    <meta name="twitter:description" content="" />
-                    <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/c53b648f-c423-4882-b67f-b10117ea61e5.jpg?token=-m4wfD7XKjkhxfcKZRbRrPyQYbCEX3VdsTSShF51NbY&height=630&width=1200&expires=33295179384" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta property="twitter:domain" content="mindsend.xyz" />
+                <meta property="twitter:url" content="https://mindsend.xyz" />
+                <meta name="twitter:title" content="" />
+                <meta name="twitter:description" content="" />
+                <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/269e2189-33d9-49e2-9efd-aac7295872ce.jpg?token=WRn3kfL5UurQzuRTJZo62LoSKdpgaPyh4351Kb6Sgnc&height=630&width=1200&expires=33295254109" />
 
-                    <script
-                        dangerouslySetInnerHTML={{
-                            __html: `
+
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
               (function() {
                 try {
                   const theme = localStorage.getItem('theme') || 'system';
@@ -80,8 +81,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
                 }
               })();
             `,
-                        }}
-                    />
+                    }}
+                />
             </head>
             <ThemeProvider>
                 <ToastProvider>
