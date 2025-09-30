@@ -51,15 +51,15 @@ export default async function RootLayout({ children }: RootLayoutProps) {
 
                 <meta property="og:url" content="https://mindsend.xyz" />
                 <meta property="og:type" content="website" />
-                <meta property="og:title" content="" />
-                <meta property="og:description" content="" />
+                <meta property="og:title" content="Mindsend Datatech" />
+                <meta property="og:description" content="Building real solutions for the decentralized web" />
                 <meta property="og:image" content="https://opengraph.b-cdn.net/production/images/269e2189-33d9-49e2-9efd-aac7295872ce.jpg?token=WRn3kfL5UurQzuRTJZo62LoSKdpgaPyh4351Kb6Sgnc&height=630&width=1200&expires=33295254109" />
 
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta property="twitter:domain" content="mindsend.xyz" />
                 <meta property="twitter:url" content="https://mindsend.xyz" />
-                <meta name="twitter:title" content="" />
-                <meta name="twitter:description" content="" />
+                <meta name="twitter:title" content="Mindsend Datatech" />
+                <meta name="twitter:description" content="Building real solutions for the decentralized web" />
                 <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/269e2189-33d9-49e2-9efd-aac7295872ce.jpg?token=WRn3kfL5UurQzuRTJZo62LoSKdpgaPyh4351Kb6Sgnc&height=630&width=1200&expires=33295254109" />
 
 
