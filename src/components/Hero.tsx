@@ -17,18 +17,22 @@ export function Hero() {
 
   return (
     <section
+      id="hero"
       style={{
         position: "relative",
         width: "100%",
-        minHeight: "60vh",
+        minHeight: "100vh",
         display: "flex",
-        justifyContent: "center",
+        flexDirection: "column",
+        justifyContent: "flex-start",
         alignItems: "center",
         padding: "1rem",
+        paddingTop: "12vh",
         borderRadius: "1rem",
         overflow: "hidden",
       }}
     >
+      {/* Background effect now handled by fixed page background */}
       {/* dark overlay */}
       <div
         style={{

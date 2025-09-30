@@ -19,6 +19,7 @@ import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
 import { Meta, Schema } from "@/once-ui/modules";
 import { Hero } from "@/components/Hero";
+import HyperspeedBackground from "@/components/HyperspeedBackground";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -31,7 +32,9 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <Column maxWidth="m" gap="xl" horizontal="center">
+    <>
+      <HyperspeedBackground />
+      <Column maxWidth="m" gap="xl" horizontal="center" style={{ position: "relative", zIndex: 1 }}>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -45,7 +48,7 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Column fillWidth paddingY="24" gap="m">
+      <Column fillWidth paddingY="0" gap="m">
         <Hero />
       </Column>
       <RevealFx translateY="16" delay={0.6}>
@@ -65,6 +68,7 @@ export default function Home() {
       )}
       <Projects range={[2]} />
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
-    </Column>
+      </Column>
+    </>
   );
 }
