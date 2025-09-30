@@ -6,6 +6,7 @@ import Hyperspeed from "./Hyperspeed";
 export default function HyperspeedBackground() {
   const [opacity, setOpacity] = useState(1);
   const rafRef = useRef<number | null>(null);
+  const [isDark, setIsDark] = useState<boolean>(true);
 
   useEffect(() => {
     const hero = document.getElementById("hero");
@@ -38,6 +39,20 @@ export default function HyperspeedBackground() {
     };
   }, []);
 
+  // Track theme from data-theme so background respects light/dark
+  useEffect(() => {
+    const root = document.documentElement;
+    const update = () => {
+      const t = root.getAttribute("data-theme");
+      if (t === "light") setIsDark(false);
+      else setIsDark(true);
+    };
+    update();
+    const mo = new MutationObserver(() => update());
+    mo.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => mo.disconnect();
+  }, []);
+
   return (
     <div
       aria-hidden
@@ -53,14 +68,14 @@ export default function HyperspeedBackground() {
         overflow: "hidden",
         transform: "translateY(-10vh)",
         willChange: "opacity, transform",
-        backgroundColor: "#000",
+        backgroundColor: isDark ? "#000" : "#fff",
       }}
     >
       <Hyperspeed paused={opacity < 0.06} effectOptions={useMemo(() => ({
         colors: {
-          roadColor: 0x080808,
-          islandColor: 0x0a0a0a,
-          background: 0x000000,
+          roadColor: isDark ? 0x080808 : 0xE6E6E6,
+          islandColor: isDark ? 0x0a0a0a : 0xF2F2F2,
+          background: isDark ? 0x000000 : 0xffffff,
           shoulderLines: 0x8b49f5,
           brokenLines: 0x8b49f5,
           // Heavily weight to light green, fewer purple/brown
@@ -74,7 +89,8 @@ export default function HyperspeedBackground() {
           ],
           sticks: 0x00f53d,
         }
-      }), [])} />
+      // theme-aware options update on isDark change
+      }), [isDark])} />
     </div>
   );
 }
