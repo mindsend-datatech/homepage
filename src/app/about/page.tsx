@@ -205,6 +205,32 @@ export default function About() {
                         </Column>
                     )}
 
+                    {about.technical.display && (
+                        <>
+                            <Heading
+                                as="h2"
+                                id={about.technical.title}
+                                variant="display-strong-s"
+                                marginBottom="24"
+                            >
+                                {about.technical.title}
+                            </Heading>
+
+                            <div style={{ width: "100%", position: "relative", overflow: "hidden", padding: "8px 0", marginBottom: 40 }}>
+                                <LogoLoop
+                                    logos={about.technical.skills.map((s) => ({ src: s.img, alt: s.title, href: s.link })) as LogoItem[]}
+                                    speed={48}
+                                    direction="left"
+                                    logoHeight={48}
+                                    gap={24}
+                                    pauseOnHover
+                                    fadeOut={false}
+                                    ariaLabel="Our Stack logos"
+                                />
+                            </div>
+                        </>
+                    )}
+
                     {about.work.display && (
                         <>
                             <Heading
@@ -325,31 +351,7 @@ export default function About() {
                         </>
                     )}
 
-                    {about.technical.display && (
-                        <>
-                            <Heading
-                                as="h2"
-                                id={about.technical.title}
-                                variant="display-strong-s"
-                                marginBottom="24"
-                            >
-                                {about.technical.title}
-                            </Heading>
-
-                            <div style={{ width: "100%", position: "relative", overflow: "hidden", padding: "8px 0", marginBottom: 40 }}>
-                                <LogoLoop
-                                    logos={about.technical.skills.map((s) => ({ src: s.img, alt: s.title, href: s.link })) as LogoItem[]}
-                                    speed={48}
-                                    direction="left"
-                                    logoHeight={48}
-                                    gap={24}
-                                    pauseOnHover
-                                    fadeOut={false}
-                                    ariaLabel="Our Stack logos"
-                                />
-                            </div>
-                        </>
-                    )}
+                    
 
 
                 </Column>

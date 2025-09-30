@@ -79,7 +79,7 @@ const useResizeObserver = (
   deps: React.DependencyList
 ) => {
   useEffect(() => {
-    if (!("ResizeObserver" in window)) {
+    if (typeof ResizeObserver === "undefined") {
       const onResize = () => cb();
       window.addEventListener("resize", onResize);
       cb();
@@ -361,4 +361,3 @@ export const LogoLoop = React.memo<LogoLoopProps>(
 LogoLoop.displayName = "LogoLoop";
 
 export default LogoLoop;
-
