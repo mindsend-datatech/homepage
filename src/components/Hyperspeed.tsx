@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, FC } from "react";
+import { useEffect, useRef, FC, useMemo } from "react";
 import * as THREE from "three";
 import {
   BloomEffect,
@@ -64,6 +64,7 @@ interface HyperspeedOptions {
 
 interface HyperspeedProps {
   effectOptions?: Partial<HyperspeedOptions>;
+  paused?: boolean;
 }
 
 const defaultOptions: HyperspeedOptions = {
@@ -944,6 +945,7 @@ class App {
   speedUpTarget: number;
   speedUp: number;
   timeOffset: number;
+  paused: boolean;
 
   constructor(container: HTMLElement, options: HyperspeedOptions) {
     this.options = options;
@@ -972,13 +974,13 @@ class App {
       10000
     );
     this.camera.position.z = -5;
-    this.camera.position.y = 6;
+    this.camera.position.y = 9;
     this.camera.position.x = 0;
 
     this.scene = new THREE.Scene();
     this.scene.background = null;
 
-    const fog = new THREE.Fog(options.colors.background, options.length * 0.2, options.length * 500);
+    const fog = new THREE.Fog(options.colors.background, options.length * 0.08, options.length * 300);
     this.scene.fog = fog;
 
     this.fogUniforms = {
@@ -1012,6 +1014,7 @@ class App {
     this.speedUpTarget = 0;
     this.speedUp = 0;
     this.timeOffset = 0;
+    this.paused = false;
 
     this.tick = this.tick.bind(this);
     this.init = this.init.bind(this);
@@ -1041,9 +1044,10 @@ class App {
     this.bloomPass = new EffectPass(
       this.camera,
       new BloomEffect({
-        luminanceThreshold: 0.2,
-        luminanceSmoothing: 0,
+        luminanceThreshold: 0.5, // allow a bit more to bloom
+        luminanceSmoothing: 0.03,
         resolutionScale: 1,
+        intensity: 0.18, // subtle glow
       })
     );
 
@@ -1225,31 +1229,39 @@ class App {
       this.camera.updateProjectionMatrix();
     }
     const delta = this.clock.getDelta();
-    this.render(delta);
-    this.update(delta);
+    if (!this.paused) {
+      this.render(delta);
+      this.update(delta);
+    }
     requestAnimationFrame(this.tick);
   }
 }
 
-const Hyperspeed: FC<HyperspeedProps> = ({ effectOptions = {} }) => {
-  const mergedOptions: HyperspeedOptions = {
+const Hyperspeed: FC<HyperspeedProps> = ({ effectOptions = {}, paused = false }) => {
+  const mergedOptions: HyperspeedOptions = useMemo(() => ({
     ...defaultOptions,
     ...effectOptions,
     colors: {
       ...defaultOptions.colors,
       ...(effectOptions.colors || {}),
     },
-  };
+  }), [effectOptions]);
   const hyperspeed = useRef<HTMLDivElement>(null);
   const appRef = useRef<App | null>(null);
 
   useEffect(() => {
     if (appRef.current) {
+      appRef.current.paused = !!paused;
+    }
+  }, [paused]);
+
+  useEffect(() => {
+    if (appRef.current) {
       appRef.current.dispose();
-      const container = document.getElementById("lights");
-      if (container) {
-        while (container.firstChild) {
-          container.removeChild(container.firstChild as Node);
+      const containerEl = hyperspeed.current;
+      if (containerEl) {
+        while (containerEl.firstChild) {
+          containerEl.removeChild(containerEl.firstChild as Node);
         }
       }
     }
@@ -1264,6 +1276,7 @@ const Hyperspeed: FC<HyperspeedProps> = ({ effectOptions = {} }) => {
 
     const myApp = new App(container, options);
     appRef.current = myApp;
+    myApp.paused = !!paused;
     myApp.loadAssets().then(myApp.init);
 
     return () => {

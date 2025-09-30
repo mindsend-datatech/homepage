@@ -10,10 +10,9 @@ import {
   Flex,
   Avatar,
 } from "@/once-ui/components";
-import { home, about, person, gallery } from "@/app/resources/content";
+import { home, about, person } from "@/app/resources/content";
 
 export function Hero() {
-  // const bgSrc = gallery.images[0].src;
 
   return (
     <section
@@ -33,13 +32,7 @@ export function Hero() {
       }}
     >
       {/* Background effect now handled by fixed page background */}
-      {/* dark overlay */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-        }}
-      />
+      {/* removed dark overlay for a cleaner background */}
 
       <Column
         maxWidth="s"
