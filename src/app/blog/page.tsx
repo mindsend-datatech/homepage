@@ -32,10 +32,10 @@ export default function Blog() {
                 }}
             />
             <Column marginBottom="xl">
-                <Heading variant="display-strong-xl" marginBottom="xs">
+                <Heading variant="display-strong-xl" marginBottom="xs" style={{ fontFamily: "var(--font-tertiary)" }}>
                     {blog.title}
                 </Heading>
-                <Heading variant="display-default-xs" onBackground="neutral-weak">
+                <Heading variant="display-default-xs" onBackground="neutral-weak" className="font-code">
                     {blog.description}
                 </Heading>
             </Column>

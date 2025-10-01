@@ -62,7 +62,7 @@ export function Hero() {
               <Heading
                 wrap="balance"
                 variant="display-strong-l"
-                style={{ color: "var(--text-default-strong)", margin: 0 }}
+                style={{ color: "var(--text-default-strong)", margin: 0, fontFamily: "var(--font-tertiary)" }}
               >
                 {home.headline}
               </Heading>
@@ -70,6 +70,7 @@ export function Hero() {
               <Text
                 wrap="balance"
                 variant="heading-default-xl"
+                className="font-code"
                 style={{ color: "var(--text-default)", margin: 0 }}
               >
                 {home.subline}

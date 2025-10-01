@@ -17,6 +17,7 @@ const protectedRoutes = {
 
 import { Roboto } from "next/font/google";
 import { Roboto_Mono } from "next/font/google";
+import { Comfortaa } from "next/font/google";
 
 const primaryFont = Roboto({
   variable: "--font-primary",
@@ -31,10 +32,17 @@ const monoFont = Roboto_Mono({
   display: "swap",
 });
 
+const comfortaaFont = Comfortaa({
+  variable: "--font-tertiary",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "700"],
+});
+
 const font = {
   primary: primaryFont,
   secondary: primaryFont,
-  tertiary: primaryFont,
+  tertiary: comfortaaFont,
   code: monoFont,
 };
 

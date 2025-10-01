@@ -55,8 +55,7 @@ const home = {
     "https://opengraph.b-cdn.net/production/images/c53b648f-c423-4882-b67f-b10117ea61e5.jpg?token=-m4wfD7XKjkhxfcKZRbRrPyQYbCEX3VdsTSShF51NbY&height=630&width=1200&expires=33295179384",
   label: "Home",
   title: `${person.name}`,
-  description:
-    `${person.name}`,
+  description: `${person.name}`,
   headline: <>Powering the Web3 revolution with full-cycle development </>,
   featured: {
     display: false,
@@ -241,7 +240,7 @@ const blog = {
   path: "/blog",
   label: "Blog",
   title: "Building on the edge of Web3",
-  description: `Insights, deep dives, and lessons from ${person.name} on building decentralized systems, infrastructure, and real-world blockchain applications.`,
+  description: `Insights, deep dives, and lessons from Mindsend Datatech on building decentralized systems, infrastructure, and real-world blockchain applications.`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };

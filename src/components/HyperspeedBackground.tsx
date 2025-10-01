@@ -2,6 +2,8 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Hyperspeed from "./Hyperspeed";
+import { Background } from "@/once-ui/components";
+import { effects } from "@/app/resources";
 
 export default function HyperspeedBackground() {
   const [opacity, setOpacity] = useState(1);
@@ -91,6 +93,19 @@ export default function HyperspeedBackground() {
         }
       // theme-aware options update on isDark change
       }), [isDark])} />
+      {/* Overlay the same global background effects above hyperspeed */}
+      <Background
+        position="fixed"
+        top="0"
+        left="0"
+        fill
+        pointerEvents="none"
+        mask={{ ...effects.mask, radius: 120 }}
+        gradient={effects.gradient}
+        dots={effects.dots}
+        grid={effects.grid}
+        lines={effects.lines}
+      />
     </div>
   );
 }
