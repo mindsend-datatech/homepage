@@ -1,0 +1,65 @@
+---
+title: "Solana Stealth: Privacy-Preserving Transactions on Solana"
+publishedAt: "2026-02-01"
+summary: "A high-performance implementation of stealth addresses on Solana, enabling private transactions with sub-second finality."
+images:
+  - "/images/projects/stealth/stealth.png"
+team:
+  - name: "Ariel Serranoni"
+    role: "Protocol Engineer"
+    avatar: "/images/og/ariel.jpg"
+    linkedIn: "https://www.linkedin.com/in/ariel-serranoni-1b762815a/"
+    achievements:
+      - "Zero-knowledge proof integration"
+      - "SPL Token program optimization"
+  - name: "Francisco Miranda"
+    role: "Full Stack Engineer"
+    avatar: "/images/og/chico.jpg"
+    linkedIn: "https://www.linkedin.com/in/chicodias/"
+    achievements:
+      - "Wallet standard implementation"
+      - "High-speed RPC indexing"
+link: "https://github.com/mindsend-datatech/solana-stealth"
+---
+
+## Overview
+Solana Stealth brings privacy to the high-speed Solana blockchain. By implementing a stealth address protocol, we allow users to receive tokens without linking their public identity to the transaction. This ensures financial privacy while maintaining the speed and low cost of Solana.
+
+## Key Features
+- **Stealth Addresses**:
+  - Receiver generates a unique, one-time address for each transaction.
+  - Sender encrypts the transaction data, readable only by the receiver.
+  - Mathematical decoupling of sender and receiver identities.
+
+- **High Performance**:
+  - Optimized for Solana's Sealevel runtime.
+  - Sub-second transaction finality.
+  - Minimal compute budget usage for maximum throughput.
+
+- **SPL Token Support**:
+  - Full compatibility with SPL tokens (USDC, SOL, etc.).
+  - Frictionless integration with existing wallets.
+
+## Technologies Used
+- **Rust (Anchor Framework)**:
+  - Smart contract logic and state management.
+  - Secure and audited program architecture.
+
+- **TypeScript / React**:
+  - User-friendly frontend for generating stealth addresses.
+  - Wallet adapter integration for seamless signing.
+
+- **Elliptic Curve Cryptography**:
+  - secp256k1 and ed25519 curve operations for address derivation.
+  - Diffie-Hellman key exchange for shared secret generation.
+
+## Challenges and Learnings
+1. **On-Chain compute limits**:
+   - Creating efficient cryptographic operations within Solana's compute budget was critical.
+   - We utilized pre-compiled programs where possible to offload expensive math.
+
+2. **User Experience**:
+   - Abstracting the complexity of key management was essential for adoption.
+   - We built an intuitive UI that handles the cryptographic heavy lifting in the background.
+
+This project pushed the boundaries of what's possible for privacy on high-performance L1s.

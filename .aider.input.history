@@ -1,0 +1,3 @@
+
+# 2025-06-06 16:08:06.676733
++/run npm install remark-math rehype-katex katex
