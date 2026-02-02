@@ -13,6 +13,11 @@ const nextConfig = {
     compiler: "modern",
     silenceDeprecations: ["legacy-js-api"],
   },
+  experimental: {
+  },
+  turbopack: {
+    root: import.meta.dirname,
+  },
 };
 
 export default withMDX(nextConfig);

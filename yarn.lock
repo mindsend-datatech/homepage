@@ -981,9 +981,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/mdx@npm:^15.3.1":
-  version: 15.5.11
-  resolution: "@next/mdx@npm:15.5.11"
+"@next/mdx@npm:^16.1.6":
+  version: 16.1.6
+  resolution: "@next/mdx@npm:16.1.6"
   dependencies:
     source-map: "npm:^0.7.0"
   peerDependencies:
@@ -994,7 +994,7 @@ __metadata:
       optional: true
     "@mdx-js/react":
       optional: true
-  checksum: 10c0/92ffc98b66159ec8397c069c722a43e215be663fa8e0e3910a93b4a38b250b20d49a486c051886025b7aa20c723ce950243d0f9209a1eced4781b2f610e278ce
+  checksum: 10c0/d2d52782ed0a7d782421deb21ddd7e6dac3135549ffc1dc8fc3c8edfe710a414031526a21ddc5c338bce24e6419c3026e430d1a68e82decd2a179cd6fe3072b7
   languageName: node
   linkType: hard
 
@@ -1083,7 +1083,7 @@ __metadata:
     "@csstools/postcss-global-data": "npm:^2.1.1"
     "@floating-ui/react-dom": "npm:^2.1.2"
     "@mdx-js/loader": "npm:^3.1.0"
-    "@next/mdx": "npm:^15.3.1"
+    "@next/mdx": "npm:^16.1.6"
     "@types/cookie": "npm:^0.6.0"
     "@types/node": "npm:^20.17.30"
     "@types/react": "npm:^18.3.20"
