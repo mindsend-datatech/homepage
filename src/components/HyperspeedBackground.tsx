@@ -75,6 +75,29 @@ export default function HyperspeedBackground() {
       }}
     >
       <Hyperspeed paused={opacity < 0.06} effectOptions={useMemo(() => ({
+        distortion: 'LongRaceDistortion',
+        length: 400,
+        roadWidth: 10,
+        islandWidth: 5,
+        lanesPerRoad: 2,
+        fov: 90,
+        fovSpeedUp: 150,
+        speedUp: 2,
+        carLightsFade: 0.4,
+        totalSideLightSticks: 50,
+        lightPairsPerRoadWay: 50,
+        shoulderLinesWidthPercentage: 0.05,
+        brokenLinesWidthPercentage: 0.1,
+        brokenLinesLengthPercentage: 0.5,
+        lightStickWidth: [0.02, 0.05],
+        lightStickHeight: [0.3, 0.7],
+        movingAwaySpeed: [20, 50],
+        movingCloserSpeed: [-150, -230],
+        carLightsLength: [400 * 0.05, 400 * 0.15],
+        carLightsRadius: [0.05, 0.14],
+        carWidthPercentage: [0.3, 0.5],
+        carShiftX: [-0.2, 0.2],
+        carFloorSeparation: [0.05, 1],
         colors: {
           roadColor: isDark ? 0x080808 : 0xE6E6E6,
           islandColor: isDark ? 0x0a0a0a : 0xF2F2F2,
@@ -92,7 +115,7 @@ export default function HyperspeedBackground() {
           ],
           sticks: 0x00f53d,
         }
-      // theme-aware options update on isDark change
+        // theme-aware options update on isDark change
       }), [isDark])} />
       {/* Overlay the same global background effects above hyperspeed */}
       <Background
