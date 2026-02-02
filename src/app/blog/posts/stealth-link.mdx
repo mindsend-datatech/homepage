@@ -14,71 +14,51 @@ team:
     linkedIn: "https://www.linkedin.com/in/chicodias/"
 ---
 
-## The Problem
-In the Web3 creator economy, accepting public donations generally means doxxing your wallet details.
-- **Public Donations**: Placing a SOL address in a bio reveals the balance, trade history, and net worth.
-- **The "Anon" Dilemma**: Privacy-focused users can't accept tips because it links their persona to their financial identity.
-- **Existing Tools**: Current solutions (Blink generators, tip jars) offer zero on-chain privacy.
+# Introducing Stealth Link: The Future of Private, Viral Donations on Solana
 
-## The Solution
-**Stealth Link** (e.g., `stealth.link/donate/ariel.stealth`) acts as a native Blink on Twitter/X, bridging the viral distribution of Solana Blinks with the privacy of Light Protocol.
+In the world of Web3, transparency is a double-edged sword. While the blockchain's open ledger is trustless and verifiable, it comes at a steep cost: **privacy**. For creators, developers, and public figures, accepting crypto donations has historically meant doxxing your financial life. Share your wallet address, and you share your entire transaction history, token balances, and net worth with the world.
 
-When a supporter donates:
+At **Mindsend**, we believe you shouldn't have to choose between financial privacy and public support. That's why we're proud to introduce **Stealth Link**.
 
-1. **Frontend**: The Blink constructs a transaction utilizing **Light Protocol**.
-2. **On-Chain**: SOL is shielded (compressed) into a private UTXO owned by the creator.
-3. **Result**: Explorers show `Donor → Light Protocol Pool`. The creator's personal wallet never receives a public transfer.
+[![Stealth Link Demo](https://img.youtube.com/vi/eVZWk6J0kAY/maxresdefault.jpg)](https://www.youtube.com/watch?v=eVZWk6J0kAY)
 
-The creator enables funds management via a private Dashboard where they can view their shielded balance and unshield (withdraw) to any fresh wallet when needed—breaking the on-chain link completely.
+## The "Anon" Dilemma
 
-![Stealth Link Interface](/images/projects/stealth/stealth-1.png)
+The creator economy is thriving on Solana, but the infrastructure for private payments hasn't kept up. If you're a privacy-focused developer ("anon") or a content creator, your options have been limited:
+1.  **Dox yourself** by posting your public address.
+2.  **Stay hidden** and forego donations entirely.
+3.  **Use complex mixers** that are hard to use and often flagged by compliance tools.
 
-## Architecture
+We built Stealth Link to solve this specific problem. It merges the viral distribution of **Solana Blinks** with the cutting-edge privacy of **Light Protocol's ZK Compression**.
 
-We built a three-layered architecture to handle the privacy flow:
+## How It Works: Privacy Meets Virality
 
-1. **Twitter/X Integation**: A Blink preview that unfurls for easy donation.
-2. **Stealth Link API**: Resolves `.stealth` handles and generates the shielding transaction.
-3. **Light Protocol (ZK Compression)**: The core layer that compresses the SOL into a shielded state.
+Stealth Link allows anyone to create a donation link (e.g., `stealth.link/donate/your-handle`) that unfurls as a native **Blink** on Twitter/X. This means your followers can donate SOL directly from their timeline with a single click.
 
-![Architecture Diagram](/images/projects/stealth/stealth.png)
+But here's the magic: **Use a public link, receive private funds.**
 
-## Technical Implementation
+1.  **The Donation**: When a supporter clicks "Donate," the Blink constructs a transaction using Light Protocol.
+2.  **The Shielding**: The SOL is "shielded" (compressed) into a private UTXO (Unspent Transaction Output) owned by you.
+3.  **The Result**: On a public explorer, the transaction looks like a transfer from the donor to the Light Protocol Pool. **Your personal wallet address never appears as the recipient.**
 
-### Shielding (Receiving Donations)
-When a donation occurs, we use the `LightSystemProgram` to compress the asset:
+## Private by Design, Simple by Default
 
-```typescript
-// Blink API constructs this transaction
-const ix = await LightSystemProgram.compress({
-  payer: donorPubkey,
-  toAddress: creatorPubkey, // Encrypted destination
-  lamports: amountLamports,
-  outputStateTree: stateTree,
-});
-```
+We've abstracted away the complexity of Zero-Knowledge proofs. As a creator, you manage your funds through our **Stealth Dashboard**.
 
-This ensures the SOL enters the compression pool, and the creator receives ownership of a compressed account invisible to standard explorers.
+*   **View Shielded Balance**: See your accumulated donations in real-time, invisible to the public.
+*   **Unshield on Your Terms**: When you're ready to use the funds, you can "unshield" them. Crucially, our dashboard allows you to withdraw to a **fresh, unconnected wallet**. This breaks the on-chain link between your donors and your spending wallet entirely.
 
-### Unshielding (Withdrawing)
-To withdraw, we query the compressed accounts and decompress them to a new destination:
+## Under the Hood
 
-```typescript
-// Fetch creator's compressed accounts via Helius ZK-RPC
-const accounts = await rpc.getCompressedAccountsByOwner(creatorPubkey);
+Stealth Link is built on a robust stack of Solana's most innovative technologies:
+*   **Light Protocol**: Provides the ZK Compression engine that makes shielded transfers possible and affordable.
+*   **Solana Blinks (Dialect)**: Enables the seamless, embeddable UI that allows donations to happen directly in social feeds.
+*   **Helius**: Powers our infrastructure with ZK-enabled RPCs for fast state compression and retrieval.
 
-// Decompress to any destination (fresh wallet for max privacy)
-const ix = await LightSystemProgram.decompress({
-  payer: creatorPubkey,
-  toAddress: destinationPubkey, 
-  lamports: totalBalance,
-  inputCompressedAccounts: accounts,
-});
-```
+## The Future of Private Payments
 
-## Tech Stack
-- **[Light Protocol](https://lightprotocol.com)**: For ZK compression and privacy.
-- **[Solana Blinks](https://docs.dialect.to)**: For social media integration.
-- **[Helius](https://helius.dev)**: For ZK-RPC and high-performance indexing.
+We believe that privacy is a fundamental requirement for the mass adoption of crypto payments. Stealth Link is just the beginning. We are working on features like **Gas Relayers** for donor privacy and support for SPL tokens like **USDC**, making private commerce a reality on Solana.
 
-This project represents a step forward in making privacy accessible and user-friendly on high-performance blockchains.
+The era of choosing between privacy and support is over.
+
+**[Try Stealth Link Today](#)** and take back control of your financial identity.
