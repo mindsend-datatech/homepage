@@ -2,49 +2,23 @@ import React from "react";
 import {
   Column,
   RevealFx,
-  Badge,
-  Row,
   Heading,
   Text,
   Button,
   Flex,
   Avatar,
-} from "@/once-ui/components";
-import { home, about, person, gallery } from "@/app/resources/content";
+} from "@once-ui-system/core";
+import { home, about, person } from "@/resources";
 
 export function Hero() {
-  // const bgSrc = gallery.images[0].src;
-
   return (
-    <section
-      style={{
-        position: "relative",
-        width: "100%",
-        minHeight: "60vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "1rem",
-        borderRadius: "1rem",
-        overflow: "hidden",
-      }}
-    >
-      {/* dark overlay */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-        }}
-      />
-
-      <Column
-        maxWidth="s"
+    <Column
+        fillWidth
         gap="l"
+        padding="m"
         style={{
           position: "relative",
           zIndex: 1,
-          width: "100%",
-          maxWidth: "960px",
         }}
       >
         <RevealFx
@@ -53,9 +27,9 @@ export function Hero() {
           horizontal="start"
           paddingBottom="16"
         >
-          <Flex gap="32" vertical="center" style={{ textAlign: "center" }}>
+          <Flex gap="32" vertical="center" s={{ direction: "column", align: "center", textAlign: "center" }}>
             <Avatar
-              src="/images/avatar.png"
+              src={person.avatar}
               size="xl"
               radius="full"
               style={{ flexShrink: 0 }}
@@ -73,7 +47,8 @@ export function Hero() {
               <Text
                 wrap="balance"
                 variant="heading-default-xl"
-                style={{ color: "var(--text-default)", margin: 0 }}
+                onBackground="neutral-weak"
+                style={{ margin: 0 }}
               >
                 {home.subline}
               </Text>
@@ -85,7 +60,6 @@ export function Hero() {
           paddingTop="12"
           delay={0.4}
           horizontal="start"
-          paddingLeft="12"
         >
           <Button
             id="about"
@@ -103,29 +77,6 @@ export function Hero() {
             </Flex>
           </Button>
         </RevealFx>
-
-        {/* {home.featured && (
-            <RevealFx
-            fillWidth
-            horizontal="start"
-            paddingTop="0"
-            paddingBottom="32"
-            paddingLeft="12"
-            >
-            <Badge
-            background="neutral-medium"
-            paddingX="12"
-            paddingY="4"
-            onBackground="neutral-strong"
-            textVariant="label-default-s"
-            arrow={false}
-            href={home.featured.href}
-            >
-            <Row paddingY="2">{home.featured.title}</Row>
-            </Badge>
-            </RevealFx>
-            )} */}
       </Column>
-    </section>
   );
 }

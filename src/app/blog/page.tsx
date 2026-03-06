@@ -1,54 +1,46 @@
-import { Column, Heading } from "@/once-ui/components";
+import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
 import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
-import { baseURL } from "@/app/resources";
-import { blog, person, newsletter } from "@/app/resources/content";
-import { Meta, Schema } from "@/once-ui/modules";
+import { baseURL, blog, person, newsletter } from "@/resources";
 
 export async function generateMetadata() {
   return Meta.generate({
     title: blog.title,
     description: blog.description,
     baseURL: baseURL,
-    image: `${baseURL}/og?title=${encodeURIComponent(blog.title)}`,
+    image: `/api/og/generate?title=${encodeURIComponent(blog.title)}`,
     path: blog.path,
   });
 }
 
 export default function Blog() {
   return (
-        <Column maxWidth="s">
-            <Schema
-                as="blog"
-                baseURL={baseURL}
-                title={blog.title}
-                description={blog.description}
-                path={blog.path}
-                image={`${baseURL}/og?title=${encodeURIComponent(blog.title)}`}
-                author={{
-                    name: person.name,
-                    url: `${baseURL}/blog`,
-                    image: `${baseURL}${person.avatar}`,
-                }}
-            />
-            <Column marginBottom="xl">
-                <Heading variant="display-strong-xl" marginBottom="xs">
-                    {blog.title}
-                </Heading>
-                <Heading variant="display-default-xs" onBackground="neutral-weak">
-                    {blog.description}
-                </Heading>
-            </Column>
-            <Column
-                fillWidth flex={1}>
-                <Heading variant="display-strong-m" onBackground="neutral-weak">
-                    Posts
-                </Heading>
-                <Posts range={[1, 1]} thumbnail direction="column" />
-                <Posts range={[2, 3]} thumbnail />
-                <Posts range={[4]} columns="2" />
-            </Column>
-            {newsletter.display && <Mailchimp newsletter={newsletter} />}
-        </Column>
-    );
+    <Column maxWidth="m" paddingTop="24">
+      <Schema
+        as="blogPosting"
+        baseURL={baseURL}
+        title={blog.title}
+        description={blog.description}
+        path={blog.path}
+        image={`/api/og/generate?title=${encodeURIComponent(blog.title)}`}
+        author={{
+          name: person.name,
+          url: `${baseURL}/blog`,
+          image: `${baseURL}${person.avatar}`,
+        }}
+      />
+      <Heading marginBottom="l" variant="heading-strong-xl" marginLeft="24">
+        {blog.title}
+      </Heading>
+      <Column fillWidth flex={1} gap="40">
+        <Posts range={[1, 1]} thumbnail />
+        <Posts range={[2, 3]} columns="2" thumbnail direction="column" />
+        <Mailchimp marginBottom="l" />
+        <Heading as="h2" variant="heading-strong-xl" marginLeft="l">
+          Earlier posts
+        </Heading>
+        <Posts range={[4]} columns="2" />
+      </Column>
+    </Column>
+  );
 }

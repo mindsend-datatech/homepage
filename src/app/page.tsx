@@ -1,24 +1,19 @@
 import React from "react";
-
 import {
   Heading,
-  Flex,
   Text,
-  Button,
-  Avatar,
   RevealFx,
   Column,
-  Badge,
+  Schema,
+  Meta,
   Row,
-} from "@/once-ui/components";
+  Flex,
+} from "@once-ui-system/core";
+import { home, about, person, baseURL, routes } from "@/resources";
 import { Projects } from "@/components/work/Projects";
-
-import { baseURL, routes } from "@/app/resources";
-import { home, about, person, newsletter } from "@/app/resources/content";
-import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
-import { Meta, Schema } from "@/once-ui/modules";
 import { Hero } from "@/components/Hero";
+import { Mailchimp } from "@/components";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -26,19 +21,20 @@ export async function generateMetadata() {
     description: home.description,
     baseURL: baseURL,
     path: home.path,
+    image: home.image,
   });
 }
 
 export default function Home() {
   return (
-    <Column maxWidth="m" gap="xl" horizontal="center">
+    <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
         path={home.path}
         title={home.title}
         description={home.description}
-        image={`${baseURL}/og?title=${encodeURIComponent(home.title)}`}
+        image={`/api/og/generate?title=${encodeURIComponent(home.title)}`}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
@@ -48,11 +44,18 @@ export default function Home() {
       <Column fillWidth paddingY="24" gap="m">
         <Hero />
       </Column>
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
+      
+      <RevealFx translateY="16" delay={0.6} fillWidth>
+        <Column fillWidth gap="24">
+            <Heading as="h2" variant="display-strong-s" paddingLeft="l">
+                Featured Projects
+            </Heading>
+            <Projects display="row" />
+        </Column>
       </RevealFx>
+
       {routes["/blog"] && (
-        <Flex fillWidth gap="24" mobileDirection="column">
+        <Flex fillWidth gap="24" mobileDirection="column" marginTop="48">
           <Flex flex={1} paddingLeft="l" paddingTop="24">
             <Heading as="h2" variant="display-strong-xs" wrap="balance">
               Latest from the blog
@@ -63,8 +66,8 @@ export default function Home() {
           </Flex>
         </Flex>
       )}
-      <Projects range={[2]} />
-      {newsletter.display && <Mailchimp newsletter={newsletter} />}
+
+      <Mailchimp />
     </Column>
   );
 }
