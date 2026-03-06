@@ -13,7 +13,6 @@ import {
   Row,
   RevealFx,
   Flex,
-  Carousel
 } from "@once-ui-system/core";
 import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
@@ -54,7 +53,7 @@ export default function About() {
     },
   ];
   return (
-    <Column maxWidth="m">
+    <Column maxWidth="m" fillWidth style={{ padding: 0 }} s={{ paddingTop: '0' }}>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -80,35 +79,36 @@ export default function About() {
           <TableOfContents structure={structure} about={about} />
         </Column>
       )}
-      <RevealFx translateY="12" speed="slow" fillWidth>
-        <Row fillWidth s={{ direction: "column" }} horizontal="center">
-            {about.avatar.display && (
-            <Column
-                className={styles.avatar}
-                top="64"
-                fitHeight
-                position="sticky"
-                s={{ position: "relative", style: { top: "auto" } }}
-                xs={{ style: { top: "auto" } }}
-                minWidth="160"
-                paddingX="l"
-                paddingBottom="xl"
-                gap="m"
-                flex={3}
-                horizontal="center"
-            >
-                <Avatar src={person.avatar} size="xl" />
+      
+      <Row fillWidth gap="xl" s={{ direction: "column", paddingTop: '0' }} horizontal="center" vertical="start" paddingTop="128">
+        {/* Left Column: Logo, Name, Tagline, Call Button (Sticky) */}
+        <Column flex={4} gap="16" vertical="start" position="sticky" top="120" s={{ position: 'relative', top: '0', horizontal: 'center', textAlign: 'center', marginBottom: '80' }}>
+          <RevealFx translateY="12" speed="slow" fillWidth>
+            <Column gap="16" fillWidth s={{ horizontal: 'center' }}>
+                <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'fit-content' }}>
+                    <Avatar 
+                        src={person.avatar} 
+                        size="xl" 
+                        className="dark-only"
+                        style={{ margin: 0, padding: 0 }} 
+                    />
+                    <Avatar 
+                        src="/images/logo_light.png" 
+                        size="xl" 
+                        className="light-only"
+                        style={{ margin: 0, padding: 0 }} 
+                    />
+                </div>
+                
                 {person.languages && person.languages.length > 0 && (
-                <Row wrap gap="8">
+                <Row wrap gap="8" s={{ horizontal: 'center' }}>
                     {person.languages.map((language, index) => (
                     <span 
                         key={index} 
+                        className="pill-tag"
                         style={{ 
                             padding: '4px 12px', 
                             borderRadius: '999px', 
-                            background: 'var(--neutral-alpha-weak)',
-                            color: 'var(--neutral-on-background-strong)',
-                            border: '1px solid var(--neutral-border-weak)',
                             fontSize: '0.85rem',
                             display: 'inline-flex',
                             alignItems: 'center',
@@ -120,66 +120,51 @@ export default function About() {
                     ))}
                 </Row>
                 )}
-            </Column>
-            )}
-            <Column className={styles.blockAlign} flex={9} maxWidth={64}>
-            <Column
-                id={about.intro.title}
-                fillWidth
-                minHeight="160"
-                vertical="center"
-                marginBottom="32"
-            >
+
+                <Column gap="4" vertical="start" s={{ horizontal: 'center' }}>
+                    <Heading 
+                        variant="display-strong-m"
+                        style={{ 
+                            fontSize: '2.5rem',
+                            lineHeight: '1.1',
+                            margin: 0,
+                            padding: 0,
+                            color: 'var(--neutral-on-background-strong)'
+                        }}
+                    >
+                    {person.name}
+                    </Heading>
+                    <Text
+                        variant="body-default-l"
+                        onBackground="neutral-weak"
+                        style={{ margin: 0, padding: 0 }}
+                    >
+                        {person.role}
+                    </Text>
+                </Column>
+
                 {about.calendar.display && (
-                <Row
-                    fitWidth
-                    border="brand-alpha-medium"
-                    background="brand-alpha-weak"
-                    radius="full"
-                    padding="4"
-                    gap="8"
-                    marginBottom="m"
-                    vertical="center"
-                    className={styles.blockAlign}
-                    style={{
-                    backdropFilter: "blur(var(--static-space-1))",
-                    }}
-                >
-                    <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                    <Row paddingX="8">Schedule a call</Row>
-                    <IconButton
-                    href={about.calendar.link}
-                    data-border="rounded"
-                    variant="secondary"
-                    icon="chevronRight"
-                    />
-                </Row>
+                    <Button
+                        href={about.calendar.link}
+                        prefixIcon="calendar"
+                        variant="secondary"
+                        size="m"
+                        data-border="rounded"
+                        className="brand-outline-btn"
+                        style={{ width: 'fit-content' }}
+                        s={{ marginBottom: '32' }}
+                    >
+                        Schedule a call
+                    </Button>
                 )}
-                <Heading 
-                    className={styles.textAlign} 
-                    variant="display-strong-l"
-                    style={{ 
-                        whiteSpace: 'nowrap',
-                        fontSize: 'clamp(1.5rem, 4vw, 2.5rem)'
-                    }}
-                >
-                  {person.name}
-                </Heading>                <Text
-                className={styles.textAlign}
-                variant="display-default-xs"
-                onBackground="neutral-weak"
-                >
-                {person.role}
-                </Text>
+
                 {social.length > 0 && (
                 <Row
-                    className={styles.blockAlign}
-                    paddingTop="20"
-                    paddingBottom="8"
+                    paddingTop="8"
                     gap="8"
                     wrap
-                    horizontal="center"
                     fitWidth
+                    s={{ horizontal: 'center' }}
                     data-border="rounded"
                 >
                     {social
@@ -187,198 +172,193 @@ export default function About() {
                     .map(
                         (item) =>
                         item.link && (
-                            <React.Fragment key={item.name}>
-                            <Row s={{ hide: true }}>
-                                <Button
-                                key={item.name}
-                                href={item.link}
-                                prefixIcon={item.icon}
-                                label={item.name}
-                                size="s"
-                                weight="default"
-                                variant="secondary"
-                                />
-                            </Row>
-                            <Row hide s={{ hide: false }}>
-                                <IconButton
+                            <IconButton
                                 size="l"
                                 key={`${item.name}-icon`}
                                 href={item.link}
                                 icon={item.icon}
                                 variant="secondary"
-                                />
-                            </Row>
-                            </React.Fragment>
+                            />
                         ),
                     )}
                 </Row>
                 )}
             </Column>
+          </RevealFx>
+        </Column>
 
-            {about.intro.display && (
-                <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
-                {about.intro.description}
-                </Column>
-            )}
+        {/* Right Column: All scrolling content */}
+        <Column flex={8} gap="80">
+          {/* Intro Description */}
+          <RevealFx translateY="12" speed="slow">
+            <Column id={about.intro.title} vertical="start" style={{ marginTop: '-4px' }}>
+                {about.intro.display && about.intro.description}
+            </Column>
+          </RevealFx>
 
-            {about.work.display && (
-                <>
-                <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
-                    {about.work.title}
-                </Heading>
-                <Column fillWidth gap="l" marginBottom="40">
-                    {about.work.experiences.map((experience, index) => (
-                    <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth gap="16" marginBottom="32">
-                        <Row fillWidth horizontal="between" vertical="center" marginBottom="4">
-                        <Row vertical="center" gap="8">
-                            <Text id={experience.company} variant="heading-strong-l">
-                                {experience.company}
+          {/* Work Experience */}
+          {about.work.display && (
+              <RevealFx translateY="12" speed="slow" delay={0.2} fillWidth>
+                <Column fillWidth gap="40">
+                    <Heading as="h2" id={about.work.title} variant="display-strong-s">
+                        {about.work.title}
+                    </Heading>
+                    <Column fillWidth gap="l">
+                        {about.work.experiences.map((experience, index) => (
+                        <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth gap="16" marginBottom="32">
+                            <Row fillWidth horizontal="between" vertical="center" marginBottom="4">
+                            <Row vertical="center" gap="8">
+                                <Text id={experience.company} variant="heading-strong-l">
+                                    {experience.company}
+                                </Text>
+                                    <Row vertical="center" gap="12">
+                                        {experience.linkedin && (
+                                            <a
+                                                href={experience.linkedin}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                style={{
+                                                    display: "inline-flex",
+                                                    alignItems: "center",
+                                                    textDecoration: "none",
+                                                    color: 'inherit'
+                                                }}
+                                            >
+                                                <Icon name="linkedin" size="s" onBackground="neutral-weak" />
+                                            </a>
+                                        )}
+                                        {experience.github && (
+                                            <a
+                                                href={experience.github}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                style={{
+                                                    display: "inline-flex",
+                                                    alignItems: "center",
+                                                    textDecoration: "none",
+                                                    color: 'inherit'
+                                                }}
+                                            >
+                                                <Icon name="github" size="s" onBackground="neutral-weak" />
+                                            </a>
+                                        )}
+                                    </Row>
+                            </Row>
+                            <Text variant="heading-default-xs" onBackground="neutral-weak">
+                                {experience.timeframe}
                             </Text>
-                                <Row vertical="center" gap="12">
-                                    {experience.linkedin && (
-                                        <a
-                                            href={experience.linkedin}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            style={{
-                                                display: "inline-flex",
-                                                alignItems: "center",
-                                                textDecoration: "none",
-                                                color: 'inherit'
-                                            }}
-                                        >
-                                            <Icon name="linkedin" size="s" onBackground="neutral-weak" />
-                                        </a>
-                                    )}
-                                    {experience.github && (
-                                        <a
-                                            href={experience.github}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            style={{
-                                                display: "inline-flex",
-                                                alignItems: "center",
-                                                textDecoration: "none",
-                                                color: 'inherit'
-                                            }}
-                                        >
-                                            <Icon name="github" size="s" onBackground="neutral-weak" />
-                                        </a>
-                                    )}
-                                </Row>
                         </Row>
-                        <Text variant="heading-default-xs" onBackground="neutral-weak">
-                            {experience.timeframe}
-                        </Text>
-                    </Row>
-                        <Text variant="body-default-s" onBackground="brand-weak">
-                            {experience.role}
-                        </Text>
-                        
-                        <Row fillWidth gap="l" vertical="start" s={{ direction: "column", horizontal: "center" }}>
-                            {experience.images && experience.images.length > 0 && (
-                                <Avatar
-                                    src={experience.images[0].src}
-                                    size="xl"
-                                    radius="full"
-                                    style={{
-                                        width: 200,
-                                        height: 200,
-                                        flexShrink: 0,
-                                        border: '1px solid var(--brand-alpha-medium)',
-                                        borderRadius: '999px',
-                                        overflow: 'hidden'
-                                    }}
-                                />
-                            )}
-                            <Column as="ul" gap="16" flex={1}>
-                                {experience.achievements.map((achievement: React.ReactNode, index: number) => (
-                                    <Text
-                                        as="li"
-                                        variant="body-default-m"
-                                        key={`${experience.company}-${index}`}
-                                    >
-                                        {achievement}
-                                    </Text>
-                                ))}
-                            </Column>
-                        </Row>
-                    </Column>
-                    ))}
-                </Column>
-                </>
-            )}
-
-            {about.studies.display && (
-                <>
-                <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m">
-                    {about.studies.title}
-                </Heading>
-                <Column fillWidth gap="l" marginBottom="40">
-                    {about.studies.institutions.map((institution, index) => (
-                    <Column key={`${institution.name}-${index}`} fillWidth gap="4">
-                        <Text id={institution.name} variant="heading-strong-l">
-                        {institution.name}
-                        </Text>
-                        <Text variant="heading-default-xs" onBackground="neutral-weak">
-                        {institution.description}
-                        </Text>
-                    </Column>
-                    ))}
-                </Column>
-                </>
-            )}
-
-            {about.technical.display && (
-                <>
-                <Heading
-                    as="h2"
-                    id={about.technical.title}
-                    variant="display-strong-s"
-                    marginBottom="40"
-                >
-                    {about.technical.title}
-                </Heading>
-                <Flex fillWidth gap="24" wrap horizontal="center">
-                    {about.technical.skills.map((skill, index) => (
-                        <a
-                            key={`${skill.title}-${index}`}
-                            href={skill.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{ textDecoration: 'none' }}
-                        >
-                            <Flex 
-                                padding="12"
-                                radius="m"
-                                background="neutral-alpha-weak"
-                                border="neutral-alpha-weak"
-                                center
-                                className="stack-icon-container"
-                                style={{ 
-                                    width: '80px', 
-                                    height: '80px',
-                                    transition: 'all 0.3s ease'
-                                }}
-                            >
-                                {skill.images && skill.images.length > 0 && (
-                                    <Media
-                                        src={skill.images[0].src}
-                                        alt={skill.images[0].alt}
-                                        width={48}
-                                        height={48}
-                                        className="stack-icon"
+                            <Text variant="body-default-s" onBackground="brand-weak">
+                                {experience.role}
+                            </Text>
+                            
+                            <Row fillWidth gap="xl" vertical="start" s={{ direction: "column", horizontal: "center" }}>
+                                {experience.images && experience.images.length > 0 && (
+                                    <Avatar
+                                        src={experience.images[0].src}
+                                        size="xl"
+                                        radius="full"
+                                        style={{
+                                            width: 240,
+                                            height: 240,
+                                            flexShrink: 0,
+                                            border: '1px solid var(--brand-alpha-medium)',
+                                            borderRadius: '999px',
+                                            overflow: 'hidden'
+                                        }}
                                     />
                                 )}
-                            </Flex>
-                        </a>
-                    ))}
-                </Flex>
-                </>
-            )}
-            </Column>
-        </Row>
-      </RevealFx>
+                                <Column gap="16" flex={1}>
+                                    {experience.achievements.map((achievement: React.ReactNode, index: number) => (
+                                        <Text
+                                            as="p"
+                                            variant="body-default-m"
+                                            key={`${experience.company}-${index}`}
+                                        >
+                                            {achievement}
+                                        </Text>
+                                    ))}
+                                </Column>
+                            </Row>
+                        </Column>
+                        ))}
+                    </Column>
+                </Column>
+              </RevealFx>
+          )}
+
+          {about.studies.display && (
+              <RevealFx translateY="12" speed="slow" delay={0.3} fillWidth>
+                <Column fillWidth gap="40">
+                    <Heading as="h2" id={about.studies.title} variant="display-strong-s">
+                        {about.studies.title}
+                    </Heading>
+                    <Column fillWidth gap="l">
+                        {about.studies.institutions.map((institution, index) => (
+                        <Column key={`${institution.name}-${index}`} fillWidth gap="4">
+                            <Text id={institution.name} variant="heading-strong-l">
+                            {institution.name}
+                            </Text>
+                            <Text variant="heading-default-xs" onBackground="neutral-weak">
+                            {institution.description}
+                            </Text>
+                        </Column>
+                        ))}
+                    </Column>
+                </Column>
+              </RevealFx>
+          )}
+
+          {about.technical.display && (
+              <RevealFx translateY="12" speed="slow" delay={0.4} fillWidth>
+                <Column fillWidth gap="40">
+                    <Heading
+                        as="h2"
+                        id={about.technical.title}
+                        variant="display-strong-s"
+                    >
+                        {about.technical.title}
+                    </Heading>
+                    <Flex fillWidth gap="24" wrap horizontal="start" s={{ horizontal: 'center' }}>
+                        {about.technical.skills.map((skill, index) => (
+                            <a
+                                key={`${skill.title}-${index}`}
+                                href={skill.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ textDecoration: 'none' }}
+                            >
+                                <Flex 
+                                    padding="12"
+                                    radius="m"
+                                    background="neutral-alpha-weak"
+                                    border="neutral-alpha-weak"
+                                    center
+                                    className="stack-icon-container"
+                                    style={{ 
+                                        width: '80px', 
+                                        height: '80px',
+                                        transition: 'all 0.3s ease'
+                                    }}
+                                >
+                                    {skill.images && skill.images.length > 0 && (
+                                        <Media
+                                            src={skill.images[0].src}
+                                            alt={skill.images[0].alt}
+                                            width={48}
+                                            height={48}
+                                            className="stack-icon"
+                                        />
+                                    )}
+                                </Flex>
+                            </a>
+                        ))}
+                    </Flex>
+                </Column>
+              </RevealFx>
+          )}
+        </Column>
+      </Row>
     </Column>
   );
 }

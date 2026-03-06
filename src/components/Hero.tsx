@@ -5,10 +5,8 @@ import {
   Heading,
   Text,
   Button,
-  Flex,
-  Avatar,
 } from "@once-ui-system/core";
-import { home, work, person } from "@/resources";
+import { home, about } from "@/resources";
 
 export function Hero() {
   return (
@@ -33,47 +31,6 @@ export function Hero() {
         horizontal="center"
       >
         <Column gap="24" horizontal="center" style={{ textAlign: "center", width: '100%' }}>
-          <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div style={{
-              position: 'absolute',
-              width: '120%',
-              height: '120%',
-              background: 'radial-gradient(circle, var(--brand-alpha-strong) 0%, transparent 70%)',
-              filter: 'blur(20px)',
-              zIndex: 0,
-              opacity: 0.6
-            }} />
-            <Avatar
-              src={person.avatar}
-              size="xl"
-              radius="full"
-              className="dark-only"
-              style={{ 
-                marginBottom: "12px",
-                border: "2px solid var(--brand-alpha-medium)",
-                padding: "4px",
-                background: "var(--brand-alpha-weak)",
-                position: 'relative',
-                zIndex: 1,
-                borderRadius: '999px'
-              }}
-            />
-            <Avatar
-              src="/images/logo_light.png"
-              size="xl"
-              radius="full"
-              className="light-only"
-              style={{ 
-                marginBottom: "12px",
-                border: "2px solid var(--brand-alpha-medium)",
-                padding: "4px",
-                background: "var(--brand-alpha-weak)",
-                position: 'relative',
-                zIndex: 1,
-                borderRadius: '999px'
-              }}
-            />
-          </div>
           <Heading
             wrap="balance"
             variant="display-strong-xl"
@@ -111,9 +68,9 @@ export function Hero() {
         horizontal="center"
       >
         <Button
-          id="work"
+          id="about"
           data-border="rounded"
-          href={work.path}
+          href={about.path}
           variant="secondary"
           size="l"
           suffixIcon="arrowRight"
@@ -125,7 +82,7 @@ export function Hero() {
             transition: 'all 0.3s ease'
           }}
         >
-          Our Work
+          About Us
         </Button>
       </RevealFx>
     </section>

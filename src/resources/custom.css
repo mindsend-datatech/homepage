@@ -53,7 +53,7 @@ body {
   /* Brand accents in light mode: Darker green for contrast */
   --brand-on-background-medium: #006622 !important;
   --brand-on-background-strong: #004d1a !important;
-  --hero-button-color: #1a1a1a !important;
+  --hero-button-color: #004d1a !important;
 }
 
 [data-theme='light'] body {
@@ -90,14 +90,14 @@ body {
 }
 
 [data-theme='light'] .hero-cta-button {
-  border-color: #1a1a1a !important;
-  color: #1a1a1a !important;
+  border-color: #004d1a !important;
+  color: #004d1a !important;
 }
 
 [data-theme='light'] .hero-cta-button:hover {
-  background: #1a1a1a !important;
+  background: #004d1a !important;
   color: #ffffff !important;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 0 30px rgba(0, 77, 26, 0.2) !important;
 }
 
 h1, h2, h3, h4, h5, h6, p, span, div, a, button {
@@ -121,9 +121,47 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button {
   background: var(--brand-alpha-weak) !important;
 }
 
-/* Tag colors in Light Mode */
+/* Tag style - Base (Dark Mode) */
+.pill-tag {
+  color: #39ff64 !important;
+  border: 1px solid rgba(57, 255, 100, 0.2) !important;
+  background: rgba(57, 255, 100, 0.05) !important;
+}
+
+/* Tag style - Light Mode override */
 [data-theme='light'] .pill-tag {
-  color: #004d1a !important; /* Dark green */
-  border-color: rgba(0, 77, 26, 0.3) !important;
+  color: #004d1a !important; /* DARK GREEN */
+  border: 1px solid rgba(0, 77, 26, 0.3) !important;
   background: rgba(0, 77, 26, 0.05) !important;
+}
+
+.project-card-list:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-alpha-medium) !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px var(--brand-alpha-weak);
+}
+
+.read-case-study-btn,
+.brand-outline-btn {
+  border: 2px solid #39ff64 !important;
+  color: #39ff64 !important;
+  background: transparent !important;
+}
+
+[data-theme='light'] .read-case-study-btn,
+[data-theme='light'] .brand-outline-btn {
+  border-color: #004d1a !important;
+  color: #004d1a !important;
+}
+
+.read-case-study-btn:hover,
+.brand-outline-btn:hover {
+  background: #39ff64 !important;
+  color: #000 !important;
+}
+
+[data-theme='light'] .read-case-study-btn:hover,
+[data-theme='light'] .brand-outline-btn:hover {
+  background: #004d1a !important;
+  color: #ffffff !important;
 }

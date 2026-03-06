@@ -135,36 +135,28 @@ export function Projects({ posts, range, exclude, display = "list" }: ProjectsPr
                     overflow: 'hidden', 
                     background: 'var(--neutral-alpha-weak)',
                 }}>
-                    <div style={{
-                        width: '100%',
-                        height: '180px',
-                        position: 'relative'
-                    }}>
-                        {imageSrc ? (
-                        <Media
-                            priority
-                            src={imageSrc}
-                            alt={post.metadata.title}
-                            fill
-                            radius="none"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            style={{ 
-                            objectFit: "cover",
-                            transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
-                            transform: hoveredIndex === index ? 'scale(1.05)' : 'scale(1)',
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100%'
-                            }}
-                        />
-                        ) : (
+                    {imageSrc ? (
+                    <Media
+                        priority
+                        src={imageSrc}
+                        alt={post.metadata.title}
+                        radius="none"
+                        aspectRatio="21 / 9"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        style={{ 
+                        objectFit: "cover",
+                        transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                        transform: hoveredIndex === index ? 'scale(1.05)' : 'scale(1)',
+                        width: '100%'
+                        }}
+                    />
+                    ) : (
+                    <div style={{ width: '100%', height: '180px', position: 'relative' }}>
                         <Column fill vertical="center" horizontal="center" gap="16" style={{ position: 'absolute', top: 0, left: 0, background: 'linear-gradient(135deg, var(--neutral-alpha-weak) 0%, var(--brand-alpha-weak) 100%)' }}>
                             <Text variant="label-default-l" onBackground="brand-weak">{post.metadata.tags?.[0] || 'Project'}</Text>
                         </Column>
-                        )}
                     </div>
+                    )}
                     <div style={{
                     position: 'absolute',
                     inset: 0,
@@ -221,9 +213,6 @@ export function Projects({ posts, range, exclude, display = "list" }: ProjectsPr
                         style={{ 
                             padding: '2px 12px', 
                             borderRadius: '999px', 
-                            background: 'rgba(57, 255, 100, 0.05)',
-                            color: '#39ff64',
-                            border: '1px solid rgba(57, 255, 100, 0.2)',
                             fontSize: '0.7rem',
                             lineHeight: '1.4',
                             display: 'inline-flex',
@@ -259,6 +248,8 @@ export function Projects({ posts, range, exclude, display = "list" }: ProjectsPr
             content={post.content}
             avatars={post.metadata.team?.map((member: any) => ({ src: member.avatar })) || []}
             link={post.metadata.link || ""}
+            tags={post.metadata.tags}
+            aspectRatio="21 / 9"
           />
         ))}
       </Column>
@@ -278,6 +269,8 @@ export function Projects({ posts, range, exclude, display = "list" }: ProjectsPr
           content={post.content}
           avatars={post.metadata.team?.map((member: any) => ({ src: member.avatar })) || []}
           link={post.metadata.link || ""}
+          tags={post.metadata.tags}
+          aspectRatio="21 / 9"
         />
       ))}
     </Column>

@@ -79,19 +79,21 @@ const about: About = {
     display: true,
     title: "Introduction",
     description: (
-      <>
-        We are a Web3-focused development team that designs, builds, and
-        maintains robust blockchain solutions.
-        <br />
-        <br />
-        From infrastructure to user-facing applications, we’ve helped shape core
-        components of the Kadena ecosystem—contributing to some of its most
-        impactful and widely used tools.
-        <br />
-        <br />
-        Our mission is simple: to deliver practical, secure, and scalable
-        products that meet the needs of modern decentralized systems.
-      </>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '32' }}>
+        <Text variant="body-default-l" onBackground="neutral-medium" style={{ fontSize: '1.5rem', lineHeight: '1.6', margin: 0 }}>
+            We are a Web3-focused development team that designs, builds, and
+            maintains robust blockchain solutions. From infrastructure to
+            user-facing applications, we’ve helped shape core components of the
+            Kadena ecosystem—contributing to some of its most impactful and widely
+            used tools.
+        </Text>
+        <Text variant="body-default-l" onBackground="neutral-medium" style={{ fontSize: '1.5rem', lineHeight: '1.6', margin: 0 }}>
+            Our mission is simple: to deliver practical, secure, and scalable
+            products that meet the needs of modern decentralized systems,
+            transforming complex technologies into accessible, seamless solutions
+            for the decentralized world.
+        </Text>
+      </div>
     ),
   },
   work: {

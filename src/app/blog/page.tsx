@@ -1,4 +1,4 @@
-import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, Grid } from "@once-ui-system/core";
 import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
 import { baseURL, blog, person, newsletter } from "@/resources";
@@ -33,14 +33,19 @@ export default function Blog() {
         {blog.title}
       </Heading>
       <Column fillWidth flex={1} gap="40">
-        <Posts range={[1, 1]} thumbnail />
-        <Posts range={[2, 2]} thumbnail />
-        <Posts range={[3, 3]} />
+        <Posts range={[1, 1]} thumbnail aspectRatio="original" />
+        <Grid columns={2} s={{ columns: 1 }} gap="16" fillWidth>
+            <Posts range={[2, 2]} thumbnail marginBottom="0" imageHeight="140px" />
+            <Column gap="16">
+                <Posts range={[3, 3]} marginBottom="0" />
+                <Posts range={[4, 4]} marginBottom="0" />
+            </Column>
+        </Grid>
         <Mailchimp marginBottom="l" />
         <Heading as="h2" variant="heading-strong-xl" marginLeft="l">
           Earlier posts
         </Heading>
-        <Posts range={[4]} columns="2" />
+        <Posts range={[5]} columns="1" direction="row" />
       </Column>
     </Column>
   );

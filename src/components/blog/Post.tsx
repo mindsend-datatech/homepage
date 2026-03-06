@@ -7,9 +7,12 @@ import { person } from "@/resources";
 interface PostProps {
   post: any;
   thumbnail: boolean;
+  direction?: "row" | "column";
+  aspectRatio?: string;
+  imageHeight?: string;
 }
 
-export default function Post({ post, thumbnail }: PostProps) {
+export default function Post({ post, thumbnail, direction = "column", aspectRatio, imageHeight = "180px" }: PostProps) {
   const imageSrc = post.metadata.image || (post.metadata.images && post.metadata.images.length > 0 ? post.metadata.images[0] : null);
 
   return (
@@ -22,9 +25,10 @@ export default function Post({ post, thumbnail }: PostProps) {
       background="transparent"
       padding="0"
       radius="l"
+      className="project-card-list"
       style={{
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: direction,
         overflow: 'hidden',
         background: 'rgba(255, 255, 255, 0.02)',
         border: '1px solid var(--neutral-alpha-weak)',
@@ -44,92 +48,87 @@ export default function Post({ post, thumbnail }: PostProps) {
       {thumbnail && (
         <div style={{ 
             position: 'relative', 
-            width: '100%', 
+            width: direction === 'row' ? '30%' : '100%', 
+            minWidth: direction === 'row' ? '200px' : 'auto',
             overflow: 'hidden', 
             background: 'var(--neutral-alpha-weak)',
         }}>
-            <div style={{
-                width: '100%',
-                height: '180px',
-                position: 'relative'
-            }}>
-                {imageSrc ? (
-                <Media
-                    priority
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    radius="none"
-                    src={imageSrc}
-                    alt={"Thumbnail of " + post.metadata.title}
-                    fill
-                    style={{ 
-                        objectFit: 'cover',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%'
-                    }}
-                />
+            {aspectRatio === 'original' ? (
+                imageSrc ? (
+                    <Media
+                        priority
+                        src={imageSrc}
+                        alt={"Thumbnail of " + post.metadata.title}
+                        aspectRatio="original"
+                        style={{ objectFit: 'contain', width: '100%' }}
+                    />
                 ) : (
-                <Column fill vertical="center" horizontal="center" style={{ position: 'absolute', top: 0, left: 0, background: 'linear-gradient(135deg, var(--neutral-alpha-weak) 0%, var(--brand-alpha-weak) 100%)' }}>
-                    <Text variant="label-default-l" onBackground="brand-weak">{post.metadata.tags?.[0] || post.metadata.tag || 'Blog'}</Text>
-                </Column>
-                )}
-            </div>
+                    <Column fillWidth aspectRatio="16/9" vertical="center" horizontal="center" style={{ background: 'linear-gradient(135deg, var(--neutral-alpha-weak) 0%, var(--brand-alpha-weak) 100%)' }}>
+                        <Text variant="label-default-l" onBackground="brand-weak">{post.metadata.tags?.[0] || post.metadata.tag || 'Blog'}</Text>
+                    </Column>
+                )
+            ) : (
+                <div style={{
+                    width: '100%',
+                    height: direction === 'row' ? '100%' : imageHeight,
+                    paddingBottom: direction === 'row' ? '0' : '0', // Removed 56.25% to respect fixed height
+                    position: 'relative'
+                }}>
+                    {imageSrc ? (
+                    <Media
+                        priority
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        radius="none"
+                        src={imageSrc}
+                        alt={"Thumbnail of " + post.metadata.title}
+                        fill
+                        style={{ 
+                            objectFit: 'cover',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%'
+                        }}
+                    />
+                    ) : (
+                    <Column fill vertical="center" horizontal="center" style={{ position: 'absolute', top: 0, left: 0, background: 'linear-gradient(135deg, var(--neutral-alpha-weak) 0%, var(--brand-alpha-weak) 100%)' }}>
+                        <Text variant="label-default-l" onBackground="brand-weak">{post.metadata.tags?.[0] || post.metadata.tag || 'Blog'}</Text>
+                    </Column>
+                    )}
+                </div>
+            )}
         </div>
       )}
       
-      <Column padding="16" gap="12" fillWidth>
-        <Row vertical="center" horizontal="between" gap="12">
-          <Row vertical="center" gap="8">
-            <Avatar src={person.avatar} size="s" />
-            <Text style={{ fontSize: '0.75rem' }} onBackground="neutral-weak">{person.name}</Text>
-          </Row>
-          <Text style={{ fontSize: '0.7rem' }} onBackground="neutral-weak">
+      <Column padding="16" gap="8" fillWidth>
+        <Row vertical="start" horizontal="between" gap="16" fillWidth>
+          <Heading as="h3" style={{ 
+              color: 'var(--text-default-strong)',
+              fontSize: '1.1rem',
+              lineHeight: '1.4',
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+              flex: 1
+          }}>
+            {post.metadata.title}
+          </Heading>
+          <Text style={{ fontSize: '0.7rem', whiteSpace: 'nowrap', marginTop: '4px' }} onBackground="neutral-weak">
             {formatDate(post.metadata.publishedAt, false)}
           </Text>
         </Row>
-        
-        <Heading as="h3" style={{ 
-            color: 'var(--text-default-strong)',
-            fontSize: '1.1rem',
-            lineHeight: '1.4',
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-            minHeight: '2.8em'
-        }}>
-          {post.metadata.title}
-        </Heading>
 
-        {post.metadata.summary && (
-          <Text 
-            variant="body-default-s" 
-            onBackground="neutral-weak"
-            style={{
-              display: '-webkit-box',
-              WebkitLineClamp: 1,
-              WebkitBoxOrient: 'vertical',
-              overflow: 'hidden',
-              lineHeight: '1.5'
-            }}
-          >
-            {post.metadata.summary}
-          </Text>
-        )}
-        <div style={{ display: 'flex', gap: '12', flexWrap: 'wrap', marginTop: '4' }}>
+        <div style={{ display: 'flex', gap: '8', flexWrap: 'wrap' }}>
           {(post.metadata.tags || []).slice(0, 2).map((tag: string) => (
             <span 
               key={tag} 
               className="pill-tag"
               style={{ 
-                padding: '2px 12px', 
+                padding: '2px 10px', 
                 borderRadius: '999px', 
-                background: 'rgba(57, 255, 100, 0.05)',
-                color: '#39ff64',
-                border: '1px solid rgba(57, 255, 100, 0.2)',
-                fontSize: '0.7rem',
+                fontSize: '0.65rem',
                 lineHeight: '1.4',
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -140,6 +139,22 @@ export default function Post({ post, thumbnail }: PostProps) {
             </span>
           ))}
         </div>
+
+        {post.metadata.summary && (
+          <Text 
+            variant="body-default-s" 
+            onBackground="neutral-weak"
+            style={{
+              display: '-webkit-box',
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+              lineHeight: '1.5'
+            }}
+          >
+            {post.metadata.summary}
+          </Text>
+        )}
       </Column>
     </Card>
   );

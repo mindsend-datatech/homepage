@@ -1,4 +1,4 @@
-import { Column, Heading, Meta, Schema, RevealFx } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, RevealFx, Text } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
 import { getPosts } from "@/utils/utils";
@@ -17,7 +17,7 @@ export default function Work() {
   const allProjects = getPosts(["src", "app", "work", "projects"]);
 
   return (
-    <Column maxWidth="m" paddingTop="24">
+    <Column maxWidth="l" fillWidth paddingX="l" paddingTop="56" gap="56">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -32,9 +32,16 @@ export default function Work() {
         }}
       />
       <RevealFx translateY="12" speed="slow" fillWidth>
-        <Heading marginBottom="l" variant="heading-strong-xl" align="center">
-            {work.title}
-        </Heading>
+        <Column fillWidth gap="32">
+            <Heading variant="display-strong-m">
+                {work.title}
+            </Heading>
+            <Text variant="body-default-l" onBackground="neutral-weak">
+                {work.description}
+            </Text>
+        </Column>
+      </RevealFx>
+      <RevealFx translateY="12" speed="slow" delay={0.2} fillWidth>
         <Projects posts={allProjects} display="list" />
       </RevealFx>
     </Column>
