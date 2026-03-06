@@ -80,7 +80,7 @@ export default function About() {
         </Column>
       )}
       
-      <Row className="about-main-row" fillWidth gap="xl" s={{ direction: "column" }} horizontal="center" vertical="start">
+      <Row className="about-main-row" fillWidth gap="xl" s={{ direction: "column", horizontal: 'start' }} horizontal="center" vertical="start">
         {/* Left Column: Logo, Name, Tagline, Call Button (Sticky) */}
         <Column className="sticky-profile" flex={4} gap="16" vertical="start" s={{ horizontal: 'center' }}>
           <RevealFx translateY="12" speed="slow" fillWidth horizontal="start" s={{ horizontal: 'center' }}>

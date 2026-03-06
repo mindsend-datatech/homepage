@@ -194,5 +194,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button {
 
   .about-intro-text-column {
     gap: 24px !important;
+    text-align: left !important;
+    align-items: flex-start !important;
   }
 }
