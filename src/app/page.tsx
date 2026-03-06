@@ -8,12 +8,14 @@ import {
   Meta,
   Row,
   Flex,
+  Button,
 } from "@once-ui-system/core";
-import { home, about, person, baseURL, routes } from "@/resources";
+import { home, about, person, baseURL, routes, work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 import { Hero } from "@/components/Hero";
 import { Mailchimp } from "@/components";
+import { getPosts } from "@/utils/utils";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -26,8 +28,10 @@ export async function generateMetadata() {
 }
 
 export default function Home() {
+  const allProjects = getPosts(["src", "app", "work", "projects"]);
+
   return (
-    <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
+    <Column maxWidth="l" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -41,33 +45,40 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Column fillWidth paddingY="24" gap="m">
-        <Hero />
-      </Column>
       
-      <RevealFx translateY="16" delay={0.6} fillWidth>
-        <Column fillWidth gap="24">
-            <Heading as="h2" variant="display-strong-s" paddingLeft="l">
-                Featured Projects
-            </Heading>
-            <Projects display="row" />
+      <Hero />
+
+      <Column fillWidth gap="32" paddingY="32" paddingX="l">
+        <Column fillWidth gap="32">
+            <Row fillWidth horizontal="between" vertical="end" paddingX="l">
+                <Heading as="h2" variant="display-strong-s">
+                    Featured Projects
+                </Heading>
+                <Button
+                    href={work.path}
+                    variant="secondary"
+                    size="s"
+                    suffixIcon="arrowRight"
+                >
+                    View all
+                </Button>
+            </Row>
+            <Projects posts={allProjects} range={[1, 6]} display="grid" />
         </Column>
-      </RevealFx>
 
-      {routes["/blog"] && (
-        <Flex fillWidth gap="24" mobileDirection="column" marginTop="48">
-          <Flex flex={1} paddingLeft="l" paddingTop="24">
-            <Heading as="h2" variant="display-strong-xs" wrap="balance">
-              Latest from the blog
-            </Heading>
-          </Flex>
-          <Flex flex={3} paddingX="20">
-            <Posts range={[1, 2]} columns="2" />
-          </Flex>
-        </Flex>
-      )}
+        {routes["/blog"] && (
+            <Column fillWidth gap="40">
+                <Heading as="h2" variant="display-strong-s" paddingLeft="l">
+                Latest from the blog
+                </Heading>
+                <Flex fillWidth paddingX="20">
+                <Posts range={[1, 4]} columns="2" thumbnail={false} />
+                </Flex>
+            </Column>
+        )}
 
-      <Mailchimp />
+        <Mailchimp />
+      </Column>
     </Column>
   );
 }

@@ -26,6 +26,7 @@ import {
   ListItem,
   Line,
 } from "@once-ui-system/core";
+import LatexRenderer from "./LatexRenderer";
 
 type CustomLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   href: string;
@@ -170,6 +171,10 @@ function createHR() {
   );
 }
 
+function createStyle({ children, jsx, ...props }: any) {
+  return <style {...props}>{children}</style>;
+}
+
 const components = {
   p: createParagraph as any,
   h1: createHeading("h1") as any,
@@ -186,6 +191,7 @@ const components = {
   ul: createList("ul") as any,
   li: createListItem as any,
   hr: createHR as any,
+  style: createStyle as any,
   Heading,
   Text,
   CodeBlock,
@@ -202,6 +208,7 @@ const components = {
   Icon,
   Media,
   SmartLink,
+  LatexRenderer,
 };
 
 type CustomMDXProps = MDXRemoteProps & {

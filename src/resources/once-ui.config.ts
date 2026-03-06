@@ -24,8 +24,8 @@ const routes: RoutesConfig = {
 };
 
 const display: DisplayConfig = {
-  location: true,
-  time: true,
+  location: false,
+  time: false,
   themeSwitcher: true,
 };
 
@@ -33,33 +33,26 @@ const protectedRoutes: ProtectedRoutesConfig = {
   "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
 };
 
-import { Inter } from "next/font/google";
 import { Roboto_Mono } from "next/font/google";
 
-const primary = Inter({
+const robotoMono = Roboto_Mono({
   variable: "--font-primary",
   subsets: ["latin"],
   display: "swap",
 });
 
-const code = Roboto_Mono({
-  variable: "--font-code",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 const fonts: FontsConfig = {
-  heading: primary,
-  body: primary,
-  label: primary,
-  code: code,
+  heading: robotoMono,
+  body: robotoMono,
+  label: robotoMono,
+  code: robotoMono,
 };
 
 const style: StyleConfig = {
   theme: "dark", // dark | light | system
   neutral: "gray", // sand | gray | slate | mint | rose | dusk | custom
-  brand: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  accent: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
+  brand: "emerald", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
+  accent: "emerald", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
   solid: "contrast", // color | contrast
   solidStyle: "flat", // flat | plastic
   border: "playful", // rounded | playful | conservative | sharp
@@ -108,7 +101,7 @@ const effects: EffectsConfig = {
   },
   grid: {
     display: true,
-    opacity: 50,
+    opacity: 20,
     color: "brand-alpha-strong",
     width: "4rem",
     height: "4rem",

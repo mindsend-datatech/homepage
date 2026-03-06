@@ -17,6 +17,7 @@ type Metadata = {
   image?: string;
   images: string[];
   tag?: string;
+  tags?: string[];
   team: Team[];
   link?: string;
 };
@@ -25,7 +26,7 @@ import { notFound } from "next/navigation";
 
 function getMDXFiles(dir: string) {
   if (!fs.existsSync(dir)) {
-    notFound();
+    return [];
   }
 
   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
@@ -39,14 +40,49 @@ function readMDXFile(filePath: string) {
   const rawContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(rawContent);
 
+  // Improved extraction logic
+  let extractedImage = "";
+  if (!data.image) {
+    // 1. Look for standard markdown image: ![alt](url)
+    const mdImageMatch = content.match(/!\[.*?\]\((.*?)\)/);
+    if (mdImageMatch) {
+      extractedImage = mdImageMatch[1];
+    } 
+    // 2. Look for <Media src="..." /> component
+    else {
+      const mediaMatch = content.match(/<Media\s+[^>]*src=["'](.*?)["']/);
+      if (mediaMatch) {
+        extractedImage = mediaMatch[1];
+      }
+      // 3. Look for HTML <img> tag
+      else {
+        const imgMatch = content.match(/<img\s+[^>]*src=["'](.*?)["']/);
+        if (imgMatch) {
+          extractedImage = imgMatch[1];
+        }
+      }
+    }
+  }
+
+  // Ensure tags is always an array
+  let tags: string[] = [];
+  if (Array.isArray(data.tags)) {
+    tags = data.tags;
+  } else if (data.tags) {
+    tags = [data.tags];
+  } else if (data.tag) {
+    tags = Array.isArray(data.tag) ? data.tag : [data.tag];
+  }
+
   const metadata: Metadata = {
     title: data.title || "",
     subtitle: data.subtitle || "",
-    publishedAt: data.publishedAt,
+    publishedAt: data.publishedAt || "",
     summary: data.summary || "",
-    image: data.image || "",
+    image: data.image || extractedImage || "",
     images: data.images || [],
-    tag: data.tag || [],
+    tag: tags[0] || "",
+    tags: tags,
     team: data.team || [],
     link: data.link || "",
   };

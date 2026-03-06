@@ -150,6 +150,8 @@ export interface About extends BasePageConfig {
       timeframe: string;
       /** Role or job title */
       role: string;
+      /** LinkedIn profile link */
+      linkedin?: string;
       /** Achievements at the company */
       achievements: React.ReactNode[];
       /** Images related to the experience */

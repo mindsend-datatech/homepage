@@ -120,19 +120,6 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
               </Text>
             </Row>
           </Row>
-          {post.metadata.image && (
-            <Media
-              src={post.metadata.image}
-              alt={post.metadata.title}
-              aspectRatio="16/9"
-              priority
-              sizes="(min-width: 768px) 100vw, 768px"
-              border="neutral-alpha-weak"
-              radius="l"
-              marginTop="12"
-              marginBottom="8"
-            />
-          )}
           <Column as="article" maxWidth="s">
             <CustomMDX source={post.content} />
           </Column>
@@ -147,7 +134,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             <Text as="h2" id="recent-posts" variant="heading-strong-xl" marginBottom="24">
               Recent posts
             </Text>
-            <Posts exclude={[post.slug]} range={[1, 2]} columns="2" thumbnail direction="column" />
+            <Posts exclude={[post.slug]} range={[1, 2]} columns="2" />
           </Column>
           <ScrollToHash />
         </Column>

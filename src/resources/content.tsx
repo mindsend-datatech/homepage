@@ -7,7 +7,7 @@ const person: Person = {
   name: "Mindsend Datatech",
   role: "Building real solutions for the decentralized web",
   avatar: "/images/avatar.png",
-  //email: "example@gmail.com",
+  email: "info@mindsend.xyz",
   location: "America/Sao_Paulo", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Portuguese"], // optional: Leave the array empty if you don't want to display languages
 };
@@ -81,11 +81,16 @@ const about: About = {
     description: (
       <>
         We are a Web3-focused development team that designs, builds, and
-        maintains robust blockchain solutions. From infrastructure to
-        user-facing applications, we’ve helped shape core components of the
-        Kadena ecosystem—contributing to some of its most impactful and widely
-        used tools. Our mission is simple: to deliver practical, secure, and
-        scalable products that meet the needs of modern decentralized systems.
+        maintains robust blockchain solutions.
+        <br />
+        <br />
+        From infrastructure to user-facing applications, we’ve helped shape core
+        components of the Kadena ecosystem—contributing to some of its most
+        impactful and widely used tools.
+        <br />
+        <br />
+        Our mission is simple: to deliver practical, secure, and scalable
+        products that meet the needs of modern decentralized systems.
       </>
     ),
   },
@@ -97,6 +102,7 @@ const about: About = {
         company: "Ariel Serranoni",
         timeframe: " ",
         role: "Co-founder, Applied Mathematician, and Web3 Engineer",
+        linkedin: "https://www.linkedin.com/in/ariel-serranoni-1b762815a/",
         achievements: [
           "Ariel is an applied mathematician with a Master’s in Computer Science and a strong track record designing, implementing, and managing Web3 systems. With deep technical foundations and a hands-on approach, he thrives in the fast-moving blockchain space—adapting quickly to new technologies and pushing the boundaries of what’s possible in decentralized architecture.",
         ],
@@ -113,6 +119,7 @@ const about: About = {
         company: "Francisco Miranda",
         timeframe: " ",
         role: "Co-founder, Data Scientist, and Web3 Engineer",
+        linkedin: "https://www.linkedin.com/in/chicodias/",
         achievements: [
           "Francisco brings consistency and curiosity to every project. With a background in Statistics and Data Science and an ongoing MBA in Software Engineering, he excels in infrastructure, networking, and backend development. A disciplined engineer and proactive team player, Francisco is the one who’s always up-to-date and always digging into the docs.",
         ],
@@ -148,33 +155,99 @@ const about: About = {
         {
           title: "Pact",
           description: <>Smart contract language for Kadena.</>,
-          tags: [
+          images: [
             {
-              name: "Pact",
-              icon: "pact",
-            },
-          ],
+              src: "/icons/pact.svg",
+              alt: "Pact",
+              width: 48,
+              height: 48
+            }
+          ]
         },
         {
           title: "Solidity",
           description: <>Smart contract language for Ethereum.</>,
-          tags: [
+          images: [
             {
-              name: "Solidity",
-              icon: "solidity",
-            },
-          ],
+              src: "/icons/solidity.svg",
+              alt: "Solidity",
+              width: 48,
+              height: 48
+            }
+          ]
         },
         {
             title: "TypeScript",
             description: <>Main programming language for frontend and backend.</>,
-            tags: [
+            images: [
               {
-                name: "TypeScript",
-                icon: "typescript",
-              },
-            ],
+                src: "/icons/typescript.svg",
+                alt: "TypeScript",
+                width: 48,
+                height: 48
+              }
+            ]
           },
+          {
+            title: "Next.js",
+            description: <>Framework for building React applications.</>,
+            images: [
+              {
+                src: "/icons/nextdotjs.svg",
+                alt: "Next.js",
+                width: 48,
+                height: 48
+              }
+            ]
+          },
+          {
+            title: "Tailwind CSS",
+            description: <>Utility-first CSS framework.</>,
+            images: [
+              {
+                src: "/icons/tailwindcss.svg",
+                alt: "Tailwind CSS",
+                width: 48,
+                height: 48
+              }
+            ]
+          },
+          {
+            title: "Docker",
+            description: <>Platform for containerized applications.</>,
+            images: [
+              {
+                src: "/icons/docker.svg",
+                alt: "Docker",
+                width: 48,
+                height: 48
+              }
+            ]
+          },
+          {
+            title: "Linux",
+            description: <>Open-source operating system.</>,
+            images: [
+              {
+                src: "/icons/linux.svg",
+                alt: "Linux",
+                width: 48,
+                height: 48
+              }
+            ]
+          },
+          {
+            title: "Python",
+            description: <>General-purpose programming language.</>,
+            images: [
+              {
+                src: "/icons/python.svg",
+                alt: "Python",
+                width: 48,
+                height: 48
+              }
+            ]
+          }
       ],
   },
 };

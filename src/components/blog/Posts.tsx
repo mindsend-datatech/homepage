@@ -1,12 +1,11 @@
 import { getPosts } from "@/utils/utils";
-import { Grid } from "@once-ui-system/core";
+import { Grid, RevealFx } from "@once-ui-system/core";
 import Post from "./Post";
 
 interface PostsProps {
   range?: [number] | [number, number];
   columns?: "1" | "2" | "3";
   thumbnail?: boolean;
-  direction?: "row" | "column";
   exclude?: string[];
 }
 
@@ -15,7 +14,6 @@ export function Posts({
   columns = "1",
   thumbnail = false,
   exclude = [],
-  direction,
 }: PostsProps) {
   let allBlogs = getPosts(["src", "app", "blog", "posts"]);
 
@@ -36,8 +34,10 @@ export function Posts({
     <>
       {displayedBlogs.length > 0 && (
         <Grid columns={columns} s={{ columns: 1 }} fillWidth marginBottom="40" gap="16">
-          {displayedBlogs.map((post) => (
-            <Post key={post.slug} post={post} thumbnail={thumbnail} direction={direction} />
+          {displayedBlogs.map((post, index) => (
+            <RevealFx key={post.slug} translateY="12" delay={index * 0.1} speed="medium" fillWidth>
+                <Post post={post} thumbnail={thumbnail} />
+            </RevealFx>
           ))}
         </Grid>
       )}
