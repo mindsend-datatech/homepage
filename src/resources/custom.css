@@ -201,11 +201,14 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button {
   .sticky-profile h1,
   .sticky-profile h2,
   .sticky-profile h3,
-  .sticky-profile p,
-  .sticky-profile span {
+  .sticky-profile p {
     text-align: center !important;
     display: block !important;
     width: 100% !important;
+  }
+
+  .sticky-profile span {
+    text-align: center !important;
   }
 
   .sticky-profile .pill-tag-row {
