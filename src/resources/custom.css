@@ -102,4 +102,28 @@ body {
 
 h1, h2, h3, h4, h5, h6, p, span, div, a, button {
   font-family: var(--font-primary), monospace !important;
+  color: inherit !important;
+}
+
+/* Stack Icons Grayscale/Theme handling */
+.stack-icon {
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+}
+
+[data-theme='light'] .stack-icon {
+  filter: brightness(0);
+  opacity: 0.6;
+}
+
+.stack-icon-container:hover {
+  border-color: var(--brand-alpha-medium) !important;
+  background: var(--brand-alpha-weak) !important;
+}
+
+/* Tag colors in Light Mode */
+[data-theme='light'] .pill-tag {
+  color: #004d1a !important; /* Dark green */
+  border-color: rgba(0, 77, 26, 0.3) !important;
+  background: rgba(0, 77, 26, 0.05) !important;
 }

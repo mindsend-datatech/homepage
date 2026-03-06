@@ -155,82 +155,98 @@ const about: About = {
       {
         title: "Pact",
         description: "Smart contract language for Kadena.",
-        images: [{ src: "/icons/pact.svg", alt: "Pact", width: 48, height: 48 }]
+        images: [{ src: "/icons/pact.svg", alt: "Pact", width: 48, height: 48 }],
+        link: "https://kadena.io/pact"
       },
       {
         title: "Solidity",
         description: "Smart contract language for Ethereum.",
-        images: [{ src: "/icons/solidity.svg", alt: "Solidity", width: 48, height: 48 }]
+        images: [{ src: "/icons/solidity.svg", alt: "Solidity", width: 48, height: 48 }],
+        link: "https://soliditylang.org/"
       },
       {
         title: "TypeScript",
         description: "Main programming language for frontend and backend.",
-        images: [{ src: "/icons/typescript.svg", alt: "TypeScript", width: 48, height: 48 }]
+        images: [{ src: "/icons/typescript.svg", alt: "TypeScript", width: 48, height: 48 }],
+        link: "https://www.typescriptlang.org/"
       },
       {
         title: "Next.js",
         description: "Framework for building React applications.",
-        images: [{ src: "/icons/nextdotjs.svg", alt: "Next.js", width: 48, height: 48 }]
+        images: [{ src: "/icons/nextdotjs.svg", alt: "Next.js", width: 48, height: 48 }],
+        link: "https://nextjs.org/"
       },
       {
         title: "Vercel",
         description: "Platform for deployment and hosting.",
-        images: [{ src: "/icons/vercel.svg", alt: "Vercel", width: 48, height: 48 }]
+        images: [{ src: "/icons/vercel.svg", alt: "Vercel", width: 48, height: 48 }],
+        link: "https://vercel.com/"
       },
       {
         title: "C#",
         description: "Backend programming language.",
-        images: [{ src: "/icons/dotnet.svg", alt: "C#", width: 48, height: 48 }]
+        images: [{ src: "/icons/dotnet.svg", alt: "C#", width: 48, height: 48 }],
+        link: "https://learn.microsoft.com/en-us/dotnet/csharp/"
       },
       {
         title: "PostgreSQL",
         description: "Relational database management system.",
-        images: [{ src: "/icons/postgresql.svg", alt: "PostgreSQL", width: 48, height: 48 }]
+        images: [{ src: "/icons/postgresql.svg", alt: "PostgreSQL", width: 48, height: 48 }],
+        link: "https://www.postgresql.org/"
       },
       {
         title: "MongoDB",
         description: "NoSQL database management system.",
-        images: [{ src: "/icons/mongodb.svg", alt: "MongoDB", width: 48, height: 48 }]
+        images: [{ src: "/icons/mongodb.svg", alt: "MongoDB", width: 48, height: 48 }],
+        link: "https://www.mongodb.com/"
       },
       {
         title: "Python",
         description: "General-purpose programming language.",
-        images: [{ src: "/icons/python.svg", alt: "Python", width: 48, height: 48 }]
+        images: [{ src: "/icons/python.svg", alt: "Python", width: 48, height: 48 }],
+        link: "https://python.org"
       },
       {
         title: "R",
         description: "Language for statistical computing.",
-        images: [{ src: "/icons/r.svg", alt: "R", width: 48, height: 48 }]
+        images: [{ src: "/icons/r.svg", alt: "R", width: 48, height: 48 }],
+        link: "https://www.r-project.org/"
       },
       {
         title: "Linux",
         description: "Open-source operating system.",
-        images: [{ src: "/icons/linux.svg", alt: "Linux", width: 48, height: 48 }]
+        images: [{ src: "/icons/linux.svg", alt: "Linux", width: 48, height: 48 }],
+        link: "https://www.kernel.org/"
       },
       {
         title: "Docker",
         description: "Platform for containerized applications.",
-        images: [{ src: "/icons/docker.svg", alt: "Docker", width: 48, height: 48 }]
+        images: [{ src: "/icons/docker.svg", alt: "Docker", width: 48, height: 48 }],
+        link: "https://www.docker.com/"
       },
       {
         title: "TailwindCSS",
         description: "Utility-first CSS framework.",
-        images: [{ src: "/icons/tailwindcss.svg", alt: "TailwindCSS", width: 48, height: 48 }]
+        images: [{ src: "/icons/tailwindcss.svg", alt: "TailwindCSS", width: 48, height: 48 }],
+        link: "https://tailwindcss.com"
       },
       {
         title: "Github",
         description: "Platform for code hosting and version control.",
-        images: [{ src: "/icons/github.svg", alt: "Github", width: 48, height: 48 }]
+        images: [{ src: "/icons/github.svg", alt: "Github", width: 48, height: 48 }],
+        link: "https://github.com"
       },
       {
         title: "WalletConnect",
         description: "Protocol for connecting dApps to mobile wallets.",
-        images: [{ src: "/icons/walletconnect.svg", alt: "WalletConnect", width: 48, height: 48 }]
+        images: [{ src: "/icons/walletconnect.svg", alt: "WalletConnect", width: 48, height: 48 }],
+        link: "https://walletconnect.network"
       },
       {
         title: "Git",
         description: "Distributed version control system.",
-        images: [{ src: "/icons/git.svg", alt: "Git", width: 48, height: 48 }]
+        images: [{ src: "/icons/git.svg", alt: "Git", width: 48, height: 48 }],
+        link: "https://git-scm.com/"
       },
     ],
   },

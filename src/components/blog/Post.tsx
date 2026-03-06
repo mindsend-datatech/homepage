@@ -120,19 +120,24 @@ export default function Post({ post, thumbnail }: PostProps) {
         )}
         <div style={{ display: 'flex', gap: '12', flexWrap: 'wrap', marginTop: '4' }}>
           {(post.metadata.tags || []).slice(0, 2).map((tag: string) => (
-            <Text 
+            <span 
               key={tag} 
+              className="pill-tag"
               style={{ 
                 padding: '2px 12px', 
-                borderRadius: '4px', 
+                borderRadius: '999px', 
                 background: 'rgba(57, 255, 100, 0.05)',
                 color: '#39ff64',
                 border: '1px solid rgba(57, 255, 100, 0.2)',
-                fontSize: '0.7rem'
+                fontSize: '0.7rem',
+                lineHeight: '1.4',
+                display: 'inline-flex',
+                alignItems: 'center',
+                whiteSpace: 'nowrap'
               }}
             >
               {tag}
-            </Text>
+            </span>
           ))}
         </div>
       </Column>

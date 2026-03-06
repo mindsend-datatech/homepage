@@ -54,7 +54,8 @@ export function Hero() {
                 padding: "4px",
                 background: "var(--brand-alpha-weak)",
                 position: 'relative',
-                zIndex: 1
+                zIndex: 1,
+                borderRadius: '999px'
               }}
             />
             <Avatar
@@ -68,7 +69,8 @@ export function Hero() {
                 padding: "4px",
                 background: "var(--brand-alpha-weak)",
                 position: 'relative',
-                zIndex: 1
+                zIndex: 1,
+                borderRadius: '999px'
               }}
             />
           </div>

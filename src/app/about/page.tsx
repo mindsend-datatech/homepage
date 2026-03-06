@@ -101,9 +101,22 @@ export default function About() {
                 {person.languages && person.languages.length > 0 && (
                 <Row wrap gap="8">
                     {person.languages.map((language, index) => (
-                    <Tag key={index} size="l">
+                    <span 
+                        key={index} 
+                        style={{ 
+                            padding: '4px 12px', 
+                            borderRadius: '999px', 
+                            background: 'var(--neutral-alpha-weak)',
+                            color: 'var(--neutral-on-background-strong)',
+                            border: '1px solid var(--neutral-border-weak)',
+                            fontSize: '0.85rem',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            whiteSpace: 'nowrap'
+                        }}
+                    >
                         {language}
-                    </Tag>
+                    </span>
                     ))}
                 </Row>
                 )}
@@ -142,10 +155,16 @@ export default function About() {
                     />
                 </Row>
                 )}
-                <Heading className={styles.textAlign} variant="display-strong-xl">
-                {person.name}
-                </Heading>
-                <Text
+                <Heading 
+                    className={styles.textAlign} 
+                    variant="display-strong-l"
+                    style={{ 
+                        whiteSpace: 'nowrap',
+                        fontSize: 'clamp(1.5rem, 4vw, 2.5rem)'
+                    }}
+                >
+                  {person.name}
+                </Heading>                <Text
                 className={styles.textAlign}
                 variant="display-default-xs"
                 onBackground="neutral-weak"
@@ -244,11 +263,14 @@ export default function About() {
                                 <Avatar
                                     src={experience.images[0].src}
                                     size="xl"
+                                    radius="full"
                                     style={{
                                         width: 200,
                                         height: 200,
                                         flexShrink: 0,
-                                        borderRadius: 'var(--radius-l)'
+                                        border: '1px solid var(--brand-alpha-medium)',
+                                        borderRadius: '999px',
+                                        overflow: 'hidden'
                                     }}
                                 />
                             )}
@@ -302,30 +324,37 @@ export default function About() {
                 </Heading>
                 <Flex fillWidth gap="24" wrap horizontal="center">
                     {about.technical.skills.map((skill, index) => (
-                        <Flex 
+                        <a
                             key={`${skill.title}-${index}`}
-                            padding="12"
-                            radius="m"
-                            background="neutral-alpha-weak"
-                            border="neutral-alpha-weak"
-                            center
-                            style={{ 
-                                width: '80px', 
-                                height: '80px',
-                                filter: 'brightness(0) invert(1)',
-                                opacity: 0.8,
-                                transition: 'all 0.3s ease'
-                            }}
+                            href={skill.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ textDecoration: 'none' }}
                         >
-                            {skill.images && skill.images.length > 0 && (
-                                <Media
-                                    src={skill.images[0].src}
-                                    alt={skill.images[0].alt}
-                                    width={48}
-                                    height={48}
-                                />
-                            )}
-                        </Flex>
+                            <Flex 
+                                padding="12"
+                                radius="m"
+                                background="neutral-alpha-weak"
+                                border="neutral-alpha-weak"
+                                center
+                                className="stack-icon-container"
+                                style={{ 
+                                    width: '80px', 
+                                    height: '80px',
+                                    transition: 'all 0.3s ease'
+                                }}
+                            >
+                                {skill.images && skill.images.length > 0 && (
+                                    <Media
+                                        src={skill.images[0].src}
+                                        alt={skill.images[0].alt}
+                                        width={48}
+                                        height={48}
+                                        className="stack-icon"
+                                    />
+                                )}
+                            </Flex>
+                        </a>
                     ))}
                 </Flex>
                 </>

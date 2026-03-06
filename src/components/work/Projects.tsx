@@ -215,19 +215,24 @@ export function Projects({ posts, range, exclude, display = "list" }: ProjectsPr
                     </Text>
                     <div style={{ display: 'flex', gap: '12', flexWrap: 'wrap', marginTop: '4' }}>
                     {post.metadata.tags?.slice(0, 3).map((tag: string) => (
-                        <Text 
+                        <span 
                         key={tag} 
+                        className="pill-tag"
                         style={{ 
                             padding: '2px 12px', 
-                            borderRadius: '4px', 
+                            borderRadius: '999px', 
                             background: 'rgba(57, 255, 100, 0.05)',
                             color: '#39ff64',
                             border: '1px solid rgba(57, 255, 100, 0.2)',
-                            fontSize: '0.7rem'
+                            fontSize: '0.7rem',
+                            lineHeight: '1.4',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            whiteSpace: 'nowrap'
                         }}
                         >
                         {tag}
-                        </Text>
+                        </span>
                     ))}
                     </div>
                 </Column>
@@ -237,6 +242,26 @@ export function Projects({ posts, range, exclude, display = "list" }: ProjectsPr
           );
         })}
       </Grid>
+    );
+  }
+
+  if (display === "list") {
+    return (
+      <Column fillWidth gap="xl" marginBottom="40" paddingX="l">
+        {displayedProjects.map((post, index) => (
+          <ProjectCard
+            priority={index < 2}
+            key={post.slug}
+            href={`/work/${post.slug}`}
+            images={post.metadata.images || (post.metadata.image ? [post.metadata.image] : [])}
+            title={post.metadata.title}
+            description={post.metadata.summary}
+            content={post.content}
+            avatars={post.metadata.team?.map((member: any) => ({ src: member.avatar })) || []}
+            link={post.metadata.link || ""}
+          />
+        ))}
+      </Column>
     );
   }
 
