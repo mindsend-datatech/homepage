@@ -104,7 +104,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 </Flex>
               )}
 
-              <Flex gap="24" vertical="center" wrap fillWidth horizontal="end" s={{ horizontal: 'end' }}>
+              <Flex gap="24" vertical="center" wrap horizontal="end" s={{ fillWidth: true, horizontal: 'end' }}>
                 {link && (
                     <a 
                     href={link} 
