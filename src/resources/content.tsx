@@ -80,18 +80,18 @@ const about: About = {
     title: "Introduction",
     description: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '32' }}>
-        <Text variant="body-default-l" onBackground="neutral-medium" style={{ fontSize: '1.5rem', lineHeight: '1.6', margin: 0 }}>
-            We are a Web3-focused development team that designs, builds, and
-            maintains robust blockchain solutions. From infrastructure to
-            user-facing applications, we’ve helped shape core components of the
-            Kadena ecosystem—contributing to some of its most impactful and widely
-            used tools.
+        <Text variant="body-default-l" onBackground="neutral-strong" style={{ fontSize: '1.5rem', lineHeight: '1.6', margin: 0 }}>
+          We are a Web3-focused development team that designs, builds, and
+          maintains robust blockchain solutions. From infrastructure to
+          user-facing applications, we’ve helped shape core components of the
+          Kadena ecosystem—contributing to some of its most impactful and widely
+          used tools.
         </Text>
-        <Text variant="body-default-l" onBackground="neutral-medium" style={{ fontSize: '1.5rem', lineHeight: '1.6', margin: 0 }}>
-            Our mission is simple: to deliver practical, secure, and scalable
-            products that meet the needs of modern decentralized systems,
-            transforming complex technologies into accessible, seamless solutions
-            for the decentralized world.
+        <Text variant="body-default-l" onBackground="neutral-strong" style={{ fontSize: '1.5rem', lineHeight: '1.6', margin: 0 }}>
+          Our mission is simple: to deliver practical, secure, and scalable
+          products that meet the needs of modern decentralized systems,
+          transforming complex technologies into accessible, seamless solutions
+          for the decentralized world.
         </Text>
       </div>
     ),
@@ -110,12 +110,12 @@ const about: About = {
           "Ariel is an applied mathematician with a Master’s in Computer Science and a strong track record designing, implementing, and managing Web3 systems. With deep technical foundations and a hands-on approach, he thrives in the fast-moving blockchain space—adapting quickly to new technologies and pushing the boundaries of what’s possible in decentralized architecture.",
         ],
         images: [
-            {
-                src: "/images/og/ariel.jpg",
-                alt: "Ariel Serranoni",
-                width: 1,
-                height: 1
-            }
+          {
+            src: "/images/og/ariel.jpg",
+            alt: "Ariel Serranoni",
+            width: 1,
+            height: 1
+          }
         ]
       },
       {
@@ -128,12 +128,12 @@ const about: About = {
           "Francisco brings consistency and curiosity to every project. With a background in Statistics and Data Science and an ongoing MBA in Software Engineering, he excels in infrastructure, networking, and backend development. A disciplined engineer and proactive team player, Francisco is the one who’s always up-to-date and always digging into the docs.",
         ],
         images: [
-            {
-                src: "/images/og/chico.jpg",
-                alt: "Francisco Miranda",
-                width: 1,
-                height: 1
-            }
+          {
+            src: "/images/og/chico.jpg",
+            alt: "Francisco Miranda",
+            width: 1,
+            height: 1
+          }
         ]
       },
     ],
