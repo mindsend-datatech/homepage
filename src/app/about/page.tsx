@@ -84,8 +84,8 @@ export default function About() {
         {/* Left Column: Logo, Name, Tagline, Call Button (Sticky) */}
         <Column className="sticky-profile" flex={4} gap="16" vertical="start" s={{ horizontal: 'center' }}>
           <RevealFx translateY="12" speed="slow" fillWidth horizontal="start" s={{ horizontal: 'center' }}>
-            <Column gap="16" fillWidth horizontal="start" s={{ horizontal: 'center' }}>
-                <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'fit-content' }}>
+            <Column gap="16" fillWidth horizontal="start" s={{ horizontal: 'center' }} className="sticky-profile">
+                <div className="avatar-wrapper" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'fit-content' }}>
                     <Avatar 
                         src={person.avatar} 
                         size="xl" 
@@ -101,7 +101,7 @@ export default function About() {
                 </div>
                 
                 {person.languages && person.languages.length > 0 && (
-                <Row wrap gap="8" horizontal="start" s={{ horizontal: 'center' }}>
+                <Row wrap gap="8" horizontal="start" s={{ horizontal: 'center' }} className="pill-tag-row">
                     {person.languages.map((language, index) => (
                     <span 
                         key={index} 

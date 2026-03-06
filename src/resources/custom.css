@@ -190,6 +190,15 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .sticky-profile .pill-tag-row {
+    justify-content: center !important;
+  }
+
+  .sticky-profile .avatar-wrapper {
+    margin: 0 auto !important;
   }
 
   .about-intro-text-column {
