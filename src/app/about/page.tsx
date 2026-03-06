@@ -80,9 +80,9 @@ export default function About() {
         </Column>
       )}
       
-      <Row fillWidth gap="xl" s={{ direction: "column", paddingTop: '0' }} horizontal="center" vertical="start" paddingTop="128">
+      <Row className="about-main-row" fillWidth gap="xl" s={{ direction: "column" }} horizontal="center" vertical="start">
         {/* Left Column: Logo, Name, Tagline, Call Button (Sticky) */}
-        <Column flex={4} gap="16" vertical="start" position="sticky" style={{ top: '120px' }} s={{ position: 'relative', top: '0', horizontal: 'center', textAlign: 'center', marginBottom: '80' }}>
+        <Column className="sticky-profile" flex={4} gap="16" vertical="start" s={{ horizontal: 'center' }}>
           <RevealFx translateY="12" speed="slow" fillWidth>
             <Column gap="16" fillWidth s={{ horizontal: 'center' }}>
                 <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'fit-content' }}>
@@ -189,7 +189,7 @@ export default function About() {
         </Column>
 
         {/* Right Column: All scrolling content */}
-        <Column flex={8} gap="80">
+        <Column flex={8} gap="80" className="about-intro-text-column">
           {/* Intro Description */}
           <RevealFx translateY="12" speed="slow">
             <Column id={about.intro.title} vertical="start" style={{ marginTop: '-4px' }}>

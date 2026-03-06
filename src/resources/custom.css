@@ -165,3 +165,34 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button {
   background: #004d1a !important;
   color: #ffffff !important;
 }
+
+/* About Page Mobile Fixes */
+.about-main-row {
+  padding-top: 128px;
+}
+
+.sticky-profile {
+  position: sticky;
+  top: 120px;
+}
+
+@media (max-width: 960px) {
+  .about-main-row {
+    padding-top: 0 !important;
+  }
+  
+  .sticky-profile {
+    position: relative !important;
+    top: 0 !important;
+    margin-bottom: 40px !important;
+    text-align: center !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .about-intro-text-column {
+    gap: 24px !important;
+  }
+}
