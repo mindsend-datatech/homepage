@@ -83,8 +83,8 @@ export default function About() {
       <Row className="about-main-row" fillWidth gap="xl" s={{ direction: "column" }} horizontal="center" vertical="start">
         {/* Left Column: Logo, Name, Tagline, Call Button (Sticky) */}
         <Column className="sticky-profile" flex={4} gap="16" vertical="start" s={{ horizontal: 'center' }}>
-          <RevealFx translateY="12" speed="slow" fillWidth>
-            <Column gap="16" fillWidth s={{ horizontal: 'center' }}>
+          <RevealFx translateY="12" speed="slow" fillWidth horizontal="center" s={{ horizontal: 'center' }}>
+            <Column gap="16" fillWidth horizontal="center" s={{ horizontal: 'center' }}>
                 <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'fit-content' }}>
                     <Avatar 
                         src={person.avatar} 
@@ -101,7 +101,7 @@ export default function About() {
                 </div>
                 
                 {person.languages && person.languages.length > 0 && (
-                <Row wrap gap="8" s={{ horizontal: 'center' }}>
+                <Row wrap gap="8" horizontal="center" s={{ horizontal: 'center' }}>
                     {person.languages.map((language, index) => (
                     <span 
                         key={index} 
@@ -121,7 +121,7 @@ export default function About() {
                 </Row>
                 )}
 
-                <Column gap="4" vertical="start" s={{ horizontal: 'center' }}>
+                <Column gap="4" vertical="start" horizontal="center" s={{ horizontal: 'center' }}>
                     <Heading 
                         variant="display-strong-m"
                         style={{ 
@@ -144,7 +144,7 @@ export default function About() {
                 </Column>
 
                 {about.calendar.display && (
-                    <Flex fillWidth s={{ marginBottom: '32' }}>
+                    <Flex fillWidth horizontal="center" s={{ marginBottom: '32', horizontal: 'center' }}>
                         <Button
                             href={about.calendar.link}
                             prefixIcon="calendar"
