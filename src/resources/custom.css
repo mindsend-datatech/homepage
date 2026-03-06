@@ -30,12 +30,12 @@ body {
 [data-theme='light'] {
   /* Page background: clean light gray */
   --page-background: #f2f2f2 !important;
-  
+
   /* Surfaces and backgrounds */
   --neutral-background-strong: #ffffff !important;
   --neutral-background-medium: #e0e0e0 !important;
   --neutral-background-weak: #f5f5f5 !important;
-  
+
   --neutral-surface: #ffffff !important;
   --neutral-border-strong: #d1d1d1 !important;
   --neutral-border-medium: #e0e0e0 !important;
@@ -45,7 +45,7 @@ body {
   --neutral-on-background-strong: #1a1a1a !important;
   --neutral-on-background-medium: #333333 !important;
   --neutral-on-background-weak: #555555 !important;
-  
+
   --neutral-on-surface-strong: #1a1a1a !important;
   --neutral-on-surface-medium: #333333 !important;
   --neutral-on-surface-weak: #555555 !important;
@@ -76,11 +76,12 @@ body {
 }
 
 /* Hero Headline Color Override for Light Mode */
-[data-theme='light'] h1, 
-[data-theme='light'] h2, 
+[data-theme='light'] h1,
+[data-theme='light'] h2,
 [data-theme='light'] h3 {
   color: #1a1a1a !important;
-  text-shadow: none !important; /* Remove glow in light mode for readability */
+  text-shadow: none !important;
+  /* Remove glow in light mode for readability */
 }
 
 .hero-cta-button:hover {
@@ -100,7 +101,17 @@ body {
   box-shadow: 0 0 30px rgba(0, 77, 26, 0.2) !important;
 }
 
-h1, h2, h3, h4, h5, h6, p, span, div, a, button {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div,
+a,
+button {
   font-family: var(--font-primary), monospace !important;
   color: inherit !important;
 }
@@ -130,7 +141,8 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button {
 
 /* Tag style - Light Mode override */
 [data-theme='light'] .pill-tag {
-  color: #004d1a !important; /* DARK GREEN */
+  color: #004d1a !important;
+  /* DARK GREEN */
   border: 1px solid rgba(0, 77, 26, 0.3) !important;
   background: rgba(0, 77, 26, 0.05) !important;
 }
@@ -138,7 +150,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button {
 .project-card-list:hover {
   transform: translateY(-4px);
   border-color: var(--brand-alpha-medium) !important;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px var(--brand-alpha-weak);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px var(--brand-alpha-weak);
 }
 
 .read-case-study-btn,
@@ -185,7 +197,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button {
   .about-main-row {
     padding-top: 0 !important;
   }
-  
+
   .sticky-profile {
     position: relative !important;
     top: 0 !important;
@@ -225,4 +237,27 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button {
     text-align: left !important;
     align-items: flex-start !important;
   }
+}
+
+/* Hover Button Text & Icon for Projects/Blog */
+.read-article-btn-global,
+.read-article-btn-global * {
+  color: #000000 !important;
+}
+
+.read-article-btn-global i,
+.read-article-btn-global svg,
+.read-article-btn-global svg path {
+  stroke: #000000 !important;
+}
+
+[data-theme='light'] .read-article-btn-global,
+[data-theme='light'] .read-article-btn-global * {
+  color: #ffffff !important;
+}
+
+[data-theme='light'] .read-article-btn-global i,
+[data-theme='light'] .read-article-btn-global svg,
+[data-theme='light'] .read-article-btn-global svg path {
+  stroke: #ffffff !important;
 }
