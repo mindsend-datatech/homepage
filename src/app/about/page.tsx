@@ -312,8 +312,8 @@ export default function About() {
                             style={{ 
                                 width: '80px', 
                                 height: '80px',
-                                filter: 'grayscale(1)',
-                                opacity: 0.7,
+                                filter: 'brightness(0) invert(1)',
+                                opacity: 0.8,
                                 transition: 'all 0.3s ease'
                             }}
                         >

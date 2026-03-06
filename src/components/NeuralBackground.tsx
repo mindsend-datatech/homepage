@@ -124,7 +124,7 @@ export const NeuralBackground: React.FC = () => {
     };
 
     const signalInterval = setInterval(() => {
-      if (particles.length < 2) return;
+      if (document.hidden || particles.length < 2) return;
       const startIdx = Math.floor(Math.random() * particles.length);
       let targetIdx = Math.floor(Math.random() * particles.length);
       const path = findPath(startIdx, targetIdx);

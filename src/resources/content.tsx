@@ -152,103 +152,87 @@ const about: About = {
     display: true, // set to false to hide this section
     title: "Our Stack",
     skills: [
-        {
-          title: "Pact",
-          description: <>Smart contract language for Kadena.</>,
-          images: [
-            {
-              src: "/icons/pact.svg",
-              alt: "Pact",
-              width: 48,
-              height: 48
-            }
-          ]
-        },
-        {
-          title: "Solidity",
-          description: <>Smart contract language for Ethereum.</>,
-          images: [
-            {
-              src: "/icons/solidity.svg",
-              alt: "Solidity",
-              width: 48,
-              height: 48
-            }
-          ]
-        },
-        {
-            title: "TypeScript",
-            description: <>Main programming language for frontend and backend.</>,
-            images: [
-              {
-                src: "/icons/typescript.svg",
-                alt: "TypeScript",
-                width: 48,
-                height: 48
-              }
-            ]
-          },
-          {
-            title: "Next.js",
-            description: <>Framework for building React applications.</>,
-            images: [
-              {
-                src: "/icons/nextdotjs.svg",
-                alt: "Next.js",
-                width: 48,
-                height: 48
-              }
-            ]
-          },
-          {
-            title: "Tailwind CSS",
-            description: <>Utility-first CSS framework.</>,
-            images: [
-              {
-                src: "/icons/tailwindcss.svg",
-                alt: "Tailwind CSS",
-                width: 48,
-                height: 48
-              }
-            ]
-          },
-          {
-            title: "Docker",
-            description: <>Platform for containerized applications.</>,
-            images: [
-              {
-                src: "/icons/docker.svg",
-                alt: "Docker",
-                width: 48,
-                height: 48
-              }
-            ]
-          },
-          {
-            title: "Linux",
-            description: <>Open-source operating system.</>,
-            images: [
-              {
-                src: "/icons/linux.svg",
-                alt: "Linux",
-                width: 48,
-                height: 48
-              }
-            ]
-          },
-          {
-            title: "Python",
-            description: <>General-purpose programming language.</>,
-            images: [
-              {
-                src: "/icons/python.svg",
-                alt: "Python",
-                width: 48,
-                height: 48
-              }
-            ]
-          }
-      ],
+      {
+        title: "Pact",
+        description: "Smart contract language for Kadena.",
+        images: [{ src: "/icons/pact.svg", alt: "Pact", width: 48, height: 48 }]
+      },
+      {
+        title: "Solidity",
+        description: "Smart contract language for Ethereum.",
+        images: [{ src: "/icons/solidity.svg", alt: "Solidity", width: 48, height: 48 }]
+      },
+      {
+        title: "TypeScript",
+        description: "Main programming language for frontend and backend.",
+        images: [{ src: "/icons/typescript.svg", alt: "TypeScript", width: 48, height: 48 }]
+      },
+      {
+        title: "Next.js",
+        description: "Framework for building React applications.",
+        images: [{ src: "/icons/nextdotjs.svg", alt: "Next.js", width: 48, height: 48 }]
+      },
+      {
+        title: "Vercel",
+        description: "Platform for deployment and hosting.",
+        images: [{ src: "/icons/vercel.svg", alt: "Vercel", width: 48, height: 48 }]
+      },
+      {
+        title: "C#",
+        description: "Backend programming language.",
+        images: [{ src: "/icons/dotnet.svg", alt: "C#", width: 48, height: 48 }]
+      },
+      {
+        title: "PostgreSQL",
+        description: "Relational database management system.",
+        images: [{ src: "/icons/postgresql.svg", alt: "PostgreSQL", width: 48, height: 48 }]
+      },
+      {
+        title: "MongoDB",
+        description: "NoSQL database management system.",
+        images: [{ src: "/icons/mongodb.svg", alt: "MongoDB", width: 48, height: 48 }]
+      },
+      {
+        title: "Python",
+        description: "General-purpose programming language.",
+        images: [{ src: "/icons/python.svg", alt: "Python", width: 48, height: 48 }]
+      },
+      {
+        title: "R",
+        description: "Language for statistical computing.",
+        images: [{ src: "/icons/r.svg", alt: "R", width: 48, height: 48 }]
+      },
+      {
+        title: "Linux",
+        description: "Open-source operating system.",
+        images: [{ src: "/icons/linux.svg", alt: "Linux", width: 48, height: 48 }]
+      },
+      {
+        title: "Docker",
+        description: "Platform for containerized applications.",
+        images: [{ src: "/icons/docker.svg", alt: "Docker", width: 48, height: 48 }]
+      },
+      {
+        title: "TailwindCSS",
+        description: "Utility-first CSS framework.",
+        images: [{ src: "/icons/tailwindcss.svg", alt: "TailwindCSS", width: 48, height: 48 }]
+      },
+      {
+        title: "Github",
+        description: "Platform for code hosting and version control.",
+        images: [{ src: "/icons/github.svg", alt: "Github", width: 48, height: 48 }]
+      },
+      {
+        title: "WalletConnect",
+        description: "Protocol for connecting dApps to mobile wallets.",
+        images: [{ src: "/icons/walletconnect.svg", alt: "WalletConnect", width: 48, height: 48 }]
+      },
+      {
+        title: "Git",
+        description: "Distributed version control system.",
+        images: [{ src: "/icons/git.svg", alt: "Git", width: 48, height: 48 }]
+      },
+    ],
   },
 };
 
