@@ -198,6 +198,14 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button {
     justify-content: center !important;
   }
 
+  .sticky-profile h1,
+  .sticky-profile h2,
+  .sticky-profile h3,
+  .sticky-profile p,
+  .sticky-profile span {
+    text-align: center !important;
+  }
+
   .sticky-profile .pill-tag-row {
     justify-content: center !important;
     width: 100% !important;
