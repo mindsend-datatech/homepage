@@ -124,6 +124,7 @@ export default function About() {
                 <Column gap="4" vertical="start" horizontal="start" s={{ horizontal: 'center' }}>
                     <Heading 
                         variant="display-strong-m"
+                        align="center"
                         style={{ 
                             fontSize: '2.5rem',
                             lineHeight: '1.1',
@@ -136,6 +137,7 @@ export default function About() {
                     </Heading>
                     <Text
                         variant="body-default-l"
+                        align="center"
                         onBackground="neutral-weak"
                         style={{ margin: 0, padding: 0 }}
                     >
