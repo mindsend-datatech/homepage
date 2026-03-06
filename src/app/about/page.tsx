@@ -82,7 +82,7 @@ export default function About() {
       
       <Row fillWidth gap="xl" s={{ direction: "column", paddingTop: '0' }} horizontal="center" vertical="start" paddingTop="128">
         {/* Left Column: Logo, Name, Tagline, Call Button (Sticky) */}
-        <Column flex={4} gap="16" vertical="start" position="sticky" top="120" s={{ position: 'relative', top: '0', horizontal: 'center', textAlign: 'center', marginBottom: '80' }}>
+        <Column flex={4} gap="16" vertical="start" position="sticky" style={{ top: '120px' }} s={{ position: 'relative', top: '0', horizontal: 'center', textAlign: 'center', marginBottom: '80' }}>
           <RevealFx translateY="12" speed="slow" fillWidth>
             <Column gap="16" fillWidth s={{ horizontal: 'center' }}>
                 <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'fit-content' }}>
@@ -144,18 +144,19 @@ export default function About() {
                 </Column>
 
                 {about.calendar.display && (
-                    <Button
-                        href={about.calendar.link}
-                        prefixIcon="calendar"
-                        variant="secondary"
-                        size="m"
-                        data-border="rounded"
-                        className="brand-outline-btn"
-                        style={{ width: 'fit-content' }}
-                        s={{ marginBottom: '32' }}
-                    >
-                        Schedule a call
-                    </Button>
+                    <Flex fillWidth s={{ marginBottom: '32' }}>
+                        <Button
+                            href={about.calendar.link}
+                            prefixIcon="calendar"
+                            variant="secondary"
+                            size="m"
+                            data-border="rounded"
+                            className="brand-outline-btn"
+                            style={{ width: 'fit-content' }}
+                        >
+                            Schedule a call
+                        </Button>
+                    </Flex>
                 )}
 
                 {social.length > 0 && (
