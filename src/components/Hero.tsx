@@ -5,8 +5,9 @@ import {
   Heading,
   Text,
   Button,
+  Avatar
 } from "@once-ui-system/core";
-import { home, about } from "@/resources";
+import { home, about, person } from "@/resources";
 
 export function Hero() {
   return (
@@ -31,11 +32,25 @@ export function Hero() {
         horizontal="center"
       >
         <Column gap="24" horizontal="center" style={{ textAlign: "center", width: '100%' }}>
+          <div className="avatar-wrapper" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'fit-content', marginBottom: '16px' }}>
+            <Avatar
+              src={person.avatar}
+              size="xl"
+              className="dark-only"
+              style={{ margin: 0, padding: 0 }}
+            />
+            <Avatar
+              src="/images/logo_light.png"
+              size="xl"
+              className="light-only"
+              style={{ margin: 0, padding: 0 }}
+            />
+          </div>
           <Heading
             wrap="balance"
             variant="display-strong-xl"
-            style={{ 
-              color: "var(--neutral-on-background-strong)", 
+            style={{
+              color: "var(--neutral-on-background-strong)",
               margin: 0,
               fontSize: "4rem",
               maxWidth: "100%",
@@ -52,7 +67,7 @@ export function Hero() {
             wrap="balance"
             variant="heading-default-xl"
             onBackground="neutral-weak"
-            style={{ 
+            style={{
               margin: 0,
               maxWidth: "800px"
             }}
