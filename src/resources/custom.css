@@ -184,7 +184,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button {
   .sticky-profile {
     position: relative !important;
     top: 0 !important;
-    margin-bottom: 40px !important;
+    margin-bottom: 24px !important;
     text-align: center !important;
     width: 100% !important;
     display: flex !important;

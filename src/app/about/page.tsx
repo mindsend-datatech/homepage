@@ -121,7 +121,7 @@ export default function About() {
                 </Row>
                 )}
 
-                <Column gap="4" vertical="start" horizontal="start" s={{ horizontal: 'center' }}>
+                <Column gap="4" vertical="start" horizontal="start" s={{ horizontal: 'center', align: 'center' }}>
                     <Heading 
                         variant="display-strong-m"
                         style={{ 
@@ -144,7 +144,7 @@ export default function About() {
                 </Column>
 
                 {about.calendar.display && (
-                    <Flex fillWidth horizontal="start" s={{ marginBottom: '32', horizontal: 'center' }}>
+                    <Flex fillWidth horizontal="start" s={{ marginBottom: '16', horizontal: 'center' }}>
                         <Button
                             href={about.calendar.link}
                             prefixIcon="calendar"
