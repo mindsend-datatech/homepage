@@ -184,13 +184,33 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button {
   .sticky-profile {
     position: relative !important;
     top: 0 !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 0 !important;
     text-align: center !important;
     width: 100% !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
+  }
+
+  .sticky-profile * {
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .sticky-profile h1,
+  .sticky-profile h2,
+  .sticky-profile h3,
+  .sticky-profile p,
+  .sticky-profile span {
+    text-align: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    display: flex !important;
   }
 
   .sticky-profile .pill-tag-row {

@@ -80,7 +80,7 @@ export default function About() {
         </Column>
       )}
       
-      <Row className="about-main-row" fillWidth gap="xl" s={{ direction: "column", horizontal: 'start' }} horizontal="center" vertical="start">
+      <Row className="about-main-row" fillWidth gap="xl" s={{ direction: "column", horizontal: 'start', gap: '0' }} horizontal="center" vertical="start">
         {/* Left Column: Logo, Name, Tagline, Call Button (Sticky) */}
         <Column className="sticky-profile" flex={4} gap="16" vertical="start" s={{ horizontal: 'center' }}>
           <RevealFx translateY="12" speed="slow" fillWidth horizontal="start" s={{ horizontal: 'center' }}>
@@ -121,7 +121,7 @@ export default function About() {
                 </Row>
                 )}
 
-                <Column gap="4" vertical="start" horizontal="start" s={{ horizontal: 'center', align: 'center' }}>
+                <Column gap="4" vertical="start" horizontal="start" s={{ horizontal: 'center' }}>
                     <Heading 
                         variant="display-strong-m"
                         style={{ 
@@ -144,7 +144,7 @@ export default function About() {
                 </Column>
 
                 {about.calendar.display && (
-                    <Flex fillWidth horizontal="start" s={{ marginBottom: '16', horizontal: 'center' }}>
+                    <Flex fillWidth horizontal="start" s={{ marginBottom: '0', horizontal: 'center' }}>
                         <Button
                             href={about.calendar.link}
                             prefixIcon="calendar"
