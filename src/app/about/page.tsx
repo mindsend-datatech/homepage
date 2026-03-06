@@ -300,31 +300,34 @@ export default function About() {
                 >
                     {about.technical.title}
                 </Heading>
-                <Carousel
-                    items={about.technical.skills.map((skill, index) => ({
-                        slide: (
-                            <Column key={`${skill.title}-${index}`} fillWidth gap="12" padding="l" radius="l" background="neutral-alpha-weak" border="neutral-alpha-weak" horizontal="center" style={{ textAlign: 'center' }}>
-                                {skill.images && skill.images.length > 0 && (
-                                    <Media
-                                        src={skill.images[0].src}
-                                        alt={skill.images[0].alt}
-                                        width={64}
-                                        height={64}
-                                        radius="m"
-                                    />
-                                )}
-                                <Text variant="heading-strong-l">
-                                    {skill.title}
-                                </Text>
-                                <Text variant="body-default-m" onBackground="neutral-weak" style={{ maxWidth: '400px' }}>
-                                    {skill.description}
-                                </Text>
-                            </Column>
-                        )
-                    }))}
-                    aspectRatio="16 / 9"
-                    indicator="line"
-                />
+                <Flex fillWidth gap="24" wrap horizontal="center">
+                    {about.technical.skills.map((skill, index) => (
+                        <Flex 
+                            key={`${skill.title}-${index}`}
+                            padding="12"
+                            radius="m"
+                            background="neutral-alpha-weak"
+                            border="neutral-alpha-weak"
+                            center
+                            style={{ 
+                                width: '80px', 
+                                height: '80px',
+                                filter: 'grayscale(1)',
+                                opacity: 0.7,
+                                transition: 'all 0.3s ease'
+                            }}
+                        >
+                            {skill.images && skill.images.length > 0 && (
+                                <Media
+                                    src={skill.images[0].src}
+                                    alt={skill.images[0].alt}
+                                    width={48}
+                                    height={48}
+                                />
+                            )}
+                        </Flex>
+                    ))}
+                </Flex>
                 </>
             )}
             </Column>
