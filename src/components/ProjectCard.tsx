@@ -83,9 +83,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               {description}
               </Text>
           )}
-          <Flex gap="32" wrap vertical="center" horizontal="between">
+          <Flex gap="32" wrap vertical="center" horizontal="between" s={{ direction: "column", horizontal: 'center' }}>
               {tags.length > 0 && (
-                <div style={{ display: 'flex', gap: '12', flexWrap: 'wrap' }}>
+                <Flex gap="12" wrap s={{ horizontal: 'center' }}>
                     {tags.map((tag) => (
                         <span 
                             key={tag} 
@@ -101,10 +101,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                             {tag}
                         </span>
                     ))}
-                </div>
+                </Flex>
               )}
 
-              <Flex gap="24" vertical="center" wrap>
+              <Flex gap="24" vertical="center" wrap fillWidth s={{ horizontal: 'end' }}>
                 {link && (
                     <a 
                     href={link} 
