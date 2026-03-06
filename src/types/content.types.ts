@@ -152,6 +152,8 @@ export interface About extends BasePageConfig {
       role: string;
       /** LinkedIn profile link */
       linkedin?: string;
+      /** GitHub profile link */
+      github?: string;
       /** Achievements at the company */
       achievements: React.ReactNode[];
       /** Images related to the experience */

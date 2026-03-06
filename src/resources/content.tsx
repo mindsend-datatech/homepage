@@ -103,6 +103,7 @@ const about: About = {
         timeframe: " ",
         role: "Co-founder, Applied Mathematician, and Web3 Engineer",
         linkedin: "https://www.linkedin.com/in/ariel-serranoni-1b762815a/",
+        github: "https://github.com/aserranoni/",
         achievements: [
           "Ariel is an applied mathematician with a Master’s in Computer Science and a strong track record designing, implementing, and managing Web3 systems. With deep technical foundations and a hands-on approach, he thrives in the fast-moving blockchain space—adapting quickly to new technologies and pushing the boundaries of what’s possible in decentralized architecture.",
         ],
@@ -120,6 +121,7 @@ const about: About = {
         timeframe: " ",
         role: "Co-founder, Data Scientist, and Web3 Engineer",
         linkedin: "https://www.linkedin.com/in/chicodias/",
+        github: "https://github.com/chicodias",
         achievements: [
           "Francisco brings consistency and curiosity to every project. With a background in Statistics and Data Science and an ongoing MBA in Software Engineering, he excels in infrastructure, networking, and backend development. A disciplined engineer and proactive team player, Francisco is the one who’s always up-to-date and always digging into the docs.",
         ],

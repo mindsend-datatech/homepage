@@ -49,35 +49,41 @@ export default function Home() {
       <Hero />
 
       <Column fillWidth gap="32" paddingY="32" paddingX="l">
-        <Column fillWidth gap="32">
-            <Row fillWidth horizontal="between" vertical="end" paddingX="l">
-                <Heading as="h2" variant="display-strong-s">
-                    Featured Projects
-                </Heading>
-                <Button
-                    href={work.path}
-                    variant="secondary"
-                    size="s"
-                    suffixIcon="arrowRight"
-                >
-                    View all
-                </Button>
-            </Row>
-            <Projects posts={allProjects} range={[1, 6]} display="grid" />
-        </Column>
+        <RevealFx translateY="16" speed="slow">
+            <Column fillWidth gap="32">
+                <Row fillWidth horizontal="between" vertical="end" paddingX="l">
+                    <Heading as="h2" variant="display-strong-s">
+                        Featured Projects
+                    </Heading>
+                    <Button
+                        href={work.path}
+                        variant="secondary"
+                        size="s"
+                        suffixIcon="arrowRight"
+                    >
+                        View all
+                    </Button>
+                </Row>
+                <Projects posts={allProjects} range={[1, 6]} display="grid" />
+            </Column>
+        </RevealFx>
 
         {routes["/blog"] && (
-            <Column fillWidth gap="40">
-                <Heading as="h2" variant="display-strong-s" paddingLeft="l">
-                Latest from the blog
-                </Heading>
-                <Flex fillWidth paddingX="20">
-                <Posts range={[1, 4]} columns="2" thumbnail={false} />
-                </Flex>
-            </Column>
+            <RevealFx translateY="16" speed="slow" delay={0.2}>
+                <Column fillWidth gap="40">
+                    <Heading as="h2" variant="display-strong-s" paddingLeft="l">
+                    Latest from the blog
+                    </Heading>
+                    <Flex fillWidth paddingX="20">
+                    <Posts range={[1, 4]} columns="2" thumbnail={false} />
+                    </Flex>
+                </Column>
+            </RevealFx>
         )}
 
-        <Mailchimp />
+        <RevealFx translateY="16" speed="slow" delay={0.4}>
+            <Mailchimp />
+        </RevealFx>
       </Column>
     </Column>
   );

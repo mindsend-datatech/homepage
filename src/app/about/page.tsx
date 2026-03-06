@@ -234,21 +234,38 @@ export default function About() {
                             <Text id={experience.company} variant="heading-strong-l">
                                 {experience.company}
                             </Text>
-                            {experience.linkedin && (
-                                <a
-                                    href={experience.linkedin}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{
-                                        display: "inline-flex",
-                                        alignItems: "center",
-                                        textDecoration: "none",
-                                        color: 'inherit'
-                                    }}
-                                >
-                                    <Icon name="linkedin" size="s" onBackground="neutral-weak" />
-                                </a>
-                            )}
+                                <Row vertical="center" gap="12">
+                                    {experience.linkedin && (
+                                        <a
+                                            href={experience.linkedin}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style={{
+                                                display: "inline-flex",
+                                                alignItems: "center",
+                                                textDecoration: "none",
+                                                color: 'inherit'
+                                            }}
+                                        >
+                                            <Icon name="linkedin" size="s" onBackground="neutral-weak" />
+                                        </a>
+                                    )}
+                                    {experience.github && (
+                                        <a
+                                            href={experience.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style={{
+                                                display: "inline-flex",
+                                                alignItems: "center",
+                                                textDecoration: "none",
+                                                color: 'inherit'
+                                            }}
+                                        >
+                                            <Icon name="github" size="s" onBackground="neutral-weak" />
+                                        </a>
+                                    )}
+                                </Row>
                         </Row>
                         <Text variant="heading-default-xs" onBackground="neutral-weak">
                             {experience.timeframe}
