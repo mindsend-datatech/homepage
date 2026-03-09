@@ -37,13 +37,13 @@ export function Hero() {
               src={person.avatar}
               size="xl"
               className="dark-only"
-              style={{ margin: 0, padding: 0 }}
+              style={{ margin: 0, padding: 0, border: 'none' }}
             />
             <Avatar
               src="/images/logo_light.png"
               size="xl"
               className="light-only"
-              style={{ margin: 0, padding: 0 }}
+              style={{ margin: 0, padding: 0, border: 'none' }}
             />
           </div>
           <Heading

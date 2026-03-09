@@ -63,7 +63,6 @@ body {
 
 /* Logo contour in light mode: Gray instead of green */
 [data-theme='light'] .light-only {
-  border-color: #888888 !important;
   background: rgba(0, 0, 0, 0.05) !important;
 }
 
