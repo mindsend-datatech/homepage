@@ -20,6 +20,7 @@ type Metadata = {
   tags?: string[];
   team: Team[];
   link?: string;
+  draft?: boolean;
 };
 
 import { notFound } from "next/navigation";
@@ -85,6 +86,7 @@ function readMDXFile(filePath: string) {
     tags: tags,
     team: data.team || [],
     link: data.link || "",
+    draft: data.draft === true,
   };
 
   return { metadata, content };
@@ -101,6 +103,11 @@ function getMDXData(dir: string) {
       slug,
       content,
     };
+  }).filter(post => {
+    if (process.env.NODE_ENV === "production" && post.metadata.draft) {
+      return false;
+    }
+    return true;
   });
 }
 
